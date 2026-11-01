@@ -1,0 +1,425 @@
+﻿ประเภทข้อมูล,8,อาเรย์,ลำดับ,ชื่อข้อมูล,"ความต้องการ
+ข้อมูล",ประเภทข้อมูล,"ความยาว
+ข้อมูล","ข้อจำกัดของ
+sFTP V.1.0","ข้อจำกัดของ
+sFTP V.4.0",คำอธิบายข้อมูล,ตัวอย่างข้อมูล,Master Data,"Sensitive 
+Data",เงื่อนไขการส่งข้อมูล
+กรมธรรม์ประกันชีวิต (Policy),,,,,,,,,,,,,,
+,No,No,1,pol_refer_code_of_company,Yes,String,50,,,รหัสอ้างอิงกรมธรรม์,"""TEST100010_00001""",,Yes,กรณีต่ออายุ (Renew) ประกันกลุ่มหรือประกัน PA หากใช้เลขกรมธรรม์เดิม ให้ส่งรหัสอ้างอิงกรมธรรม์ (pol_refer_code_of_company) เป็นรหัสใหม่ที่ไม่ซ้ำกับของรหัสเดิม
+,No,No,2,pol_transaction_status,Yes,String,2,,,สถานะการส่งข้อมูล,"""N""",ภาคผนวก ก - TransactionStatus,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,3,pol_company_id,Yes,String,4,,,รหัสบริษัทประกันชีวิต,"""400""",,Yes,
+,No,No,4,pol_id,Yes,String,30,,,เลขที่กรมธรรม์,"""T222000222""",,Yes,
+,No,No,5,pol_type,Yes,String,20,,,ประเภทกรมธรรม์,"""PT-03""",ภาคผนวก ก - PolicyType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,6,pol_type_gli_name,No,number (int),,,,จำนวนคนในประกันกลุ่ม,10,,No,กรณี pol_type = PT-03 / PT-10 ต้องระบุ  pol_type_gli_name ด้วย
+,No,No,7,pol_type_gli_plan,No,number (int),,,,จำนวนแผนในประกันกลุ่ม,5,,No,กรณี pol_type = PT-03 / PT-10 ต้องระบุ pol_type_gli_plan ด้วย
+,No,No,8,pol_product_type,Yes,String,20,,,รหัสแบบของผลิตภัณฑ์ (อ้างอิงจาก I-Serff),"""PPT-09""",ภาคผนวก ก - PolicyProduct,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,9,pol_product_type_other_detail,Yes,String,50,,,รายละเอียดแบบของผลิตภัณฑ์ (กรณีระบุรหัสแบบของผลิตภัณฑ์เป็น อื่นๆ),"""ข้อมูลผลิตภัณฑ์ประกันภัย""",,No,
+,No,No,10,pol_type_2,Yes,String,20,,,ชนิดกรมธรรม์,"""PL""",ภาคผนวก ก - PolicyKind,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,11,pol_sub_type,Yes,String,50,,,รหัสแบบที่บริษัทประกันชีวิตได้รับอนุมัติ (อ้างอิงจาก I-Serff),"""1002S000000351""",,No,API MASTER: I-SERFF (OIC Plancode ที่ได้รับอนุมัติจากระบบ I-Serff)
+,No,No,12,pol_name,Yes,String,pol_ppt,,,ชื่อทางการค้าของกรมธรรม์,"""ประกันสุขภาพ 3+ สุขกายสบายกระเป๋า""",,No,
+,No,No,13,pol_name_oic,Yes,String,500,,,ชื่อแบบกรมธรรม์ที่ได้รับการอนุมัติ จากนายทะเบียน,"""ประกันสุขภาพ""",,No,
+,No,No,14,pol_start_date,Yes,DateTime,,,,วันที่เริ่มต้นความคุ้มครอง,"""2021-07-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,15,pol_end_date,Yes,DateTime,,,,วันที่สิ้นสุดความคุ้มครอง,"""2021-07-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,16,pol_claim_document,No,String,500,,,เอกสารอื่นๆ ประกอบการยื่นเคลม,"""ใบมรณะบัตร""",,No,เอกสารที่ยื่นประกอบการเคลมที่มีผลทำให้กรมธรรม์สิ้นสุดลง เช่น ใบมรณะบัตร เป็นต้น
+,No,No,17,pol_payment_term,No,String,100,,,เงื่อนไขการชำระเบี้ยประกันภัยของกรมธรรม์,"""กำหนดการชำระเบี้ยครั้งถัดไป วันที่ 14/02/2021""",,Yes,
+,No,No,18,pol_payment_amount,Yes,number (decimal),,,,จำนวนเบี้ยประกันภัยที่ต้องที่ต้องชำระต่อปีที่ระบุในสัญญากรมธรรม์ (บาท),5210,,Yes,ส่งข้อมูลเป็นตัวเลข และจุดทศนิยมไม่เกิน 2 ตำแหน่ง
+,No,No,19,pol_payment_period,Yes,String,20,,,งวดการชำระเบี้ยประกันภัยตามที่ระบุในสัญญากรมธรรม์,"""02""",ภาคผนวก ก - PaymentPeriod,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,20,pol_info_url,Yes,String,500,,,"URL สำหรับดูข้อมูลกรมธรรม์ฉบับเต็ม หรือ URL 
+สำหรับดูข้อมูลกรมธรรม์จาก Policy Custodian หรือ URL ที่เกี่ยวข้อง","""www.abc.or.th/information/poliicy """,,Yes,URL สำหรับดูข้อมูลกรมธรรม์ฉบับเต็ม หรือ URL สำหรับดูข้อมูลกรมธรรม์จาก Policy Custodian หรือ URL ที่เกี่ยวข้อง
+,No,No,21,pol_claim_url,No,String,500,,,เอกสารอื่นๆ หรือหลักฐานประกอบการสิ้นสุดการรับประกันภัย,"""www.abc.or.th/claims""",,Yes,
+,No,Yes,22,pol_document_urls,No,[String],500,,,URL สำหรับแสดงไฟล์ที่เกี่ยวข้องกับกรมธรรม์ทั้งหมด,"[""https://www.clicknext.com/portfolio"",
+""https://blog.clicknext.com/""]",,Yes,
+,No,No,23,pol_year,Yes,number (int),,,,ปีที่กรมธรรม์,3,,Yes,"(1) ตัวอย่างข้อมูล ปีที่ 1, 2, 3, 4, ..., 99 (ให้บริษัทประกันส่งข้อมูลมา update ทุกปี)
+(2) กรณีต่ออายุ (Renew) ประกันกลุ่มหรือประกัน PA ระบุ ปีที่กรมธรรม์ (pol_year) เป็น 1"
+,No,No,24,pol_status,Yes,String,20,,,สถานะของกรมธรรม์,"""0100""",ภาคผนวก ก - PolicyStatus,Yes,"(1) กรณีต่ออายุ (Renew) ประกันกลุ่มหรือประกัน PA ระบุ สถานะของกรมธรรม์ (pol_status) เป็น กรมธรรม์ใหม่ (รหัส 0100) 
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,25,pol_status_note,No,String,500,,,หมายเหตุสถานะกรมธรรม์,"""4""",,Yes,
+,No,No,26,pol_status_date,Yes,DateTime,,,,วันที่แก้ไขสถานะกรมธรรม์,"""2021-05-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,27,pol_expropriation_value,Yes(C),number (decimal),,,,มูลค่าการเวนคืน (บาท),2000,,No,กรณี pol_status = “0600” ต้องระบุ pol_expropriation_value ด้วย
+,No,No,28,pol_immediate_refund,Yes(C),number (decimal),,,,จำนวนเงินจ่ายคืนทันที กรณี มูลค่าใช้เงินสำเร็จ หรือมูลค่าขยายเวลา (บาท),1000,,No,กรณี pol_status = “0206” / “0207” ต้องระบุ pol_immediate_refund ด้วย
+,No,No,29,pol_sale_date,No,DateTime,,,,วันที่เสนอขาย,"""2021-05-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,30,pol_transaction_date,Yes,DateTime,,,,วันที่ทำรายการเปลี่ยนแปลง/แก้ไขรายการข้อมูลที่เกี่ยวข้องกับกรมธรรม์ประกันภัย,"""2021-06-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,วันที่ทำรายการเปลี่ยนแปลง/แก้ไขรายการข้อมูลที่เกี่ยวข้องกับกรมธรรม์ประกันภัย
+,No,No,31,pol_approved_date,Yes(C),DateTime,,,,วันที่อนุมัติ,"""2021-07-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,ถ้า pol_approved_date (วันที่อนุมัติ) มีค่าต้องนำส่งข้อมูล insrd_issued_age
+,No,No,32,pol_issue_date,Yes,DateTime,,,,วันที่ออกกรมธรรม์,"""2021-08-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,33,pol_account_date,Yes,DateTime,,,,วันที่บันทึกรายการบัญชีของกรมธรรม์,"""2021-09-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,34,pol_agree_date,Yes,DateTime,,,,วันที่ทําสัญญา หรือวันที่พิจารณาอนุมัติรับประกันภัย,"""2021-06-30T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,35,pol_distribution,Yes,String,20,,,ช่องทางการขาย,"""01""",ภาคผนวก ก - Distribution,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,36,pol_distribution_other_detail,Yes(C),String,50,,,รายละเอียดช่องทางการขาย (กรณีระบุช่องทางการขายเป็น อื่นๆ),"""ใบปลิว""",,No,กรณีระบุ policy_distribution = “อื่น ๆ” ต้องระบุ pol_distribution_other_detail ด้วย
+,No,No,37,pol_license,Yes,String,20,,,เลขที่นายหน้านิติบุคคล/รหัสบริษัทประกันชีวิต/เลขที่ใบอนุญาตตัวแทน/เลขที่นายหน้าบุคคลธรรมดา,"""231456933""",,No,"(1) API MASTER: AGDOI ระบบตัวแทนนายหน้า
+(2) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์"
+,No,No,38,pol_re_insured_contact_number,No,String,50,,,เลขที่สัญญาประกันภัยต่อ (ถ้ามี),"""info@clicknext.com""",,No,หากมีข้อมูลสัญญาประกันภัยต่อ บริษัทประกันจำเป็นต้องนำส่งข้อมูล
+,No,No,39,pol_life_detail,No,String,2000,,,สรุปสาระสำคัญ,"""สรุปสาระสำคัญ""",,No,
+,No,No,40,renewal,Yes,String,20,,,การต่ออายุประกันภัย (Renew),"""01""",ภาคผนวก ก - RenewalType,No,"กรณีกรมธรรม์หมดความคุ้มครองและต่อประกันภัยกับบริษัทเดิม
+(1) หากใช้เลขกรมธรรม์เดิม ให้ส่งรหัสอ้างอิงกรมธรรม์ (pol_refer_code_of_company) เป็นรหัสใหม่ที่ไม่ซ้ำกับของรหัสเดิม
+(2) ระบุ สถานะของกรมธรรม์ (pol_status) เป็น กรมธรรม์ใหม่ (รหัส 0100)
+(3) ระบุ ปีที่กรมธรรม์ (pol_year) เป็น 1
+(4) ระบุ การต่ออายุประกันภัย (renewal) เป็น ต่ออายุกับบริษัทประกันภัยเดิม (รหัส 01)
+(5) ต้องส่งเลขที่กรมธรรม์เดิมก่อนต่ออายุกรมธรรม์ (renewal_pol_id)
+(6) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,41,renewal_pol_id,Yes(C),String,20 > 30,,,เลขที่กรมธรรม์เดิมก่อนต่ออายุกรมธรรม์ (กรณีระบุการต่ออายุประกันภัย เป็น การต่ออายุกรมธรรม์กับบริษัทเดิม),"""CN-RENEW-EXAMPLE""",,Yes,กรณีระบุ การต่ออายุประกันภัย เป็น ต่ออายุกับบริษัทประกันภัยเดิม (รหัส 01) ต้องส่งเลขที่กรมธรรม์เดิมก่อนต่ออายุกรมธรรม์ (renewal_pol_id)
+,Yes,No,42,customer,Yes,Customer,,,,ข้อมูลผู้ชำระเบี้ยประกันภัย,,,No,ต้องนำส่งข้อมูลตามชุดข้อมูล Customer ข้อมูลผู้ชำระเบี้ยประกันภัย ลำดับที่ 1-47
+,Yes,Yes,43,insureds,Yes,[insureds],,"5,000",,รายการผู้เอาประกันภัย,โดยจะต้องระบุข้อมูล Field ตาม Format,,No,ต้องนำส่งข้อมูลตามชุดข้อมูล Insured รายการผู้เอาประกันภัย ลำดับที่ 1-34
+,Yes,Yes,44,sub_policies,Yes,[SubPolicy],,"2,500",,รายการความคุ้มครอง สัญญาหลัก สัญญาเพิ่มเติม หรือ บันทึกสลักหลัง,โดยจะต้องระบุข้อมูล Field ตาม Format,,No,"(1) ให้แยกชุดข้อมูลตามสัญญาในหน้ากรมธรรม์
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล SubPolicy รายการความคุ้มครอง สัญญาหลัก สัญญาเพิ่มเติม หรือ บันทึกสลักหลัง ลำดับที่ 1-9"
+,Yes,Yes,45,beneficiaries,Yes(C),[Beneficiary],,250,,รายการผู้รับประโยชน์,โดยจะต้องระบุข้อมูล Field ตาม Format,,No,"(1) บริษัทต้องนำส่งข้อมูลผู้รับผลประโยชน์ต้องนำส่งข้อมูลที่ตารางใดตารางหนึ่งเป็นอย่างน้อย insrd_beneficiaries หรือ beneficiaries
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล Beneficiary รายการผู้รับประโยชน์ ลำดับที่ 1-5"
+,Yes,Yes,46,endorsements,Yes(C),[Endorsement],,100,,รายการสลักหลังของกรมธรรม์,,,No,"(1) หากมีข้อมูลสลักหลังกรมธรรม์ บริษัทประกันจำเป็นต้องนำส่งข้อมูล
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล Endorsement รายการสลักหลังของกรมธรรม์ ลำดับที่ 1-6"
+,Yes,Yes,47,loans,No,[Loan],,100,,รายการกู้ยืมของกรมธรรม์,,,No,"(1) หากมีข้อมูลการกู้ยืมเงิน บริษัทประกันจำเป็นต้องนำส่งข้อมูล
+(2)  ต้องนำส่งข้อมูลตามชุดข้อมูล Loan รายการกู้ยืมของกรมธรรม์ ลำดับที่ 1-7"
+,Yes,Yes,48,loan_payments,No,[LoanPayment],,100,,รายการการจ่ายกู้ยืมของกรมธรรม์,,,No,"(1) หากมีข้อมูลการจ่ายกู้ยืมของกรมธรรม์ บริษัทประกันจำเป็นต้องนำส่งข้อมูล
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล LoanPayment รายการการจ่ายกู้ยืมของกรมธรรม์ ลำดับที่ 1-5"
+,Yes,Yes,49,investments,No,[Investment],,500,,รายการลงทุนของกรมธรรม์,,,No,"(1) หากมีข้อมูลการลงทุนกรมธรรม์ บริษัทประกันจำเป็นต้องนำส่งข้อมูล
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล Investment รายการลงทุนของกรมธรรม์ ลำดับที่ 1-3"
+ผู้ซื้อประกันชีวิต (Customer),,,,,,,,,,,,,,
+,No,No,1,cust_type,Yes,String,20,,,ประเภทผู้ชำระเบี้ยประกันภัย,"""P""",ภาคผนวก ก - CustomerType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,2,cust_type_other_detail,No,String,50,,,รายละเอียดประเภทผู้ชำระเบี้ยประกันภัย (กรณีระบุประเภทผู้ชำระเบี้ยประกันเป็น อื่นๆ),"""Note""",,Yes,
+,No,No,3,cust_id_type,Yes,String,20,,,ประเภทเอกสารระบุตัวตน,"""99""",ภาคผนวก ก - IdentificationType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,4,cust_id,Yes,String,50,,,เลขประจำตัวประชาชน/เลขทะเบียนนิติบุคคล ของผู้ชำระเบี้ยประกันภัย,"""1209700608854""",,Yes,"(1) กรณี Cust_type = P ให้ส่งเลขบัตรประชาชน
+(2) กรณี Cust_type = O ให้ส่งเลขทะเบียนนิติบุคคล
+(3) กรณี Cust_type = F ให้ส่งเลขหนังสือเดินทาง หรือ เลขบัตรประจำตัวบุคคลซึ่งไม่มีสัญชาติไทย (ในบัตรคนต่างด้าว)"
+,No,No,5,cust_company_name,No,String,200,,,ชื่อบริษัท (cust_type = O),"""บริษัท ไทยแลนด์""",,Yes,"กรณีประกันกลุ่มที่ผู้ชำระเบี้ยประกันเป็นบริษัทต้องระบุชื่อบริษัทที่ช่อง cust_company_name ส่วนช่อง cust_first_name ,  cust_last_name ให้ส่งเป็น = “” "
+,No,No,6,cust_first_name,Yes,String,80,,,ชื่อผู้ชำระเบี้ยประกันภัย,"""สวัสดี""",,Yes,
+,No,No,7,cust_last_name,Yes,String,80,,,นามสกุลผู้ชำระเบี้ยประกันภัย,"""ทวีสุข""",,Yes,หากมีชื่อกลาง ต้องระบุในฟิล์ดนามสกุล
+,No,No,8,cust_age,No,number (int),,,,อายุ (ล่าสุดที่เก็บในระบบ บริษัทประกันชีวิต),62,,No,บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+,No,No,9,cust_birthday,No,DateTime,,,,วันเกิด,"""1995-06-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,สามารถส่งเวลาเป็น 00:00 
+,No,No,10,cust_gender,Yes,String,20,,,เพศ,"""01""",ภาคผนวก ก - Gender,No,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) กรณีประกันกลุ่มให้นำส่งเป็น 99
+(3) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,11,cust_address,Yes,String,500,,,ที่อยู่หลักตามกรมธรรม์ของผู้ชำระเบี้ยประกันภัย,"""45/1""",,Yes,
+,No,No,12,cust_sub_district,Yes,String,2,,,รหัสตำบล ที่อยู่หลักตามกรมธรรม์ของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""05""",ภาคผนวก ค -  Location Code ,Yes,เอกสาร ภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,13,cust_district,Yes,String,2,,,รหัสอำเภอ ที่อยู่หลักตามกรมธรรม์ของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""02""",ภาคผนวก ค -  Location Code ,Yes,เอกสาร ภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,14,cust_province,Yes,String,2,,,รหัสจังหวัด ที่อยู่หลักตามกรมธรรม์ของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""10""",ภาคผนวก ค -  Location Code ,Yes,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) เอกสาร ภาคผนวก ค - ตาราง รหัส Location Code "
+,No,No,15,cust_zip_code,No,String,50,,,รหัสไปรษณีย์,"""20000""",,Yes,
+,No,No,16,cust_country_code,No,String,20,,,รหัสประเทศ,"""THA""",ภาคผนวก ก - Country,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,17,cust_phone_number,No,String,100,,,เบอร์โทรศัพท์บ้านหรือสำนักงาน,"""02 120 5512 ต่อ 785""",,Yes,หากส่งข้อมูลจะตรวจว่า ความยาวไม่ต่ำกว่า 6 ตัวอักษร
+,No,No,18,cust_mobile_number,No,String,100,,,เบอร์โทรศัพท์มือถือ,"""+66 920051596""",,Yes,หากส่งข้อมูลจะตรวจว่า ความยาวไม่ต่ำกว่า 6 ตัวอักษร
+,No,No,19,cust_email,No,String,50,,,อีเมล์,"""info@comcom.com""",,Yes,ให้ส่งค่าที่ถูกต้องตาม email format
+,No,No,20,cust_issued_age,No,number (int),,,,อายุขณะเริ่มเอาประกันภัย ตามที่บริษัทประกันชีวิตใช้คิดเบี้ยประกันภัย,62,,No,หากมีข้อมูล บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+,No,No,21,cust_race,No,String,30,,,เชิ้อชาติ,"""ไทย""",,No,
+,No,No,22,cust_nationality,No,String,30,,,สัญชาติ,"""ไทย""",,No,
+,No,No,23,cust_religion,No,String,30,,,ศาสนา,"""พุทธ""",,No,
+,No,No,24,cust_occupation_level,Yes,String,20,,,ชั้นอาชีพผู้ชำระเบี้ยประกันภัย,"""01""",ภาคผนวก ก - OccupationLevel,No,"(1) กรณีประกันกลุ่ม ต้องระบุชั้นอาชีพที่ใช้ในการคำนวนเบี้ยประกันกลุ่ม
+(2) อ้างอิงเอกสารภาคผนวก ก"
+,No,No,25,cust_occupation_level_other_detail,No,String,50,,,รายละเอียดชั้นอาชีพผู้ชำระเบี้ยประกันภัย (กรณีระบุชั้นอาชีพเป็น อื่นๆ),"""ไม่มีข้อมูล""",,No,กรณี cust_occupation_level มีค่า = 99 ให้ส่งค่าที่ไม่ใช่ Empty string หรือ White space
+,No,No,26,cust_occupation,Yes,String,500,,,อาชีพผู้ชำระเบี้ยประกันภัย,"""โปรแกรมเมอร์""",,No,
+,No,No,27,cust_job,No,String,50,,,ลักษณะงานที่ทำ,"""โปรแกรม""",,No,
+,No,No,28,cust_position,No,String,30,,,ตำแหน่ง,"""ผู้จัดการทั่วไป""",,No,
+,No,No,29,cust_business_type,Yes,String,200,,,ลักษณะธุรกิจ,"""สื่อ""",,No,
+,No,No,30,cust_income_per_year,No,number (decimal),,,,รายได้ต่อปี,450000.8,,No,
+,No,No,31,cust_us_person,No,Bool,1,,,เป็นบุคคลที่ถือสัญชาติอเมริกัน,"""Y""",,No,"Y = ใช่, N = ไม่ใช่ "
+,No,No,32,cust_us_person_born,No,Bool,1,,,เป็นบุคคลที่เกิดที่ประเทศสหรัฐอเมริกา,"""Y""",,No,"Y = ใช่, N = ไม่ใช่ "
+,No,No,33,cust_us_person_green_card,No,Bool,1,,,เป็นบุคคลที่ถือ Green Card ของประเทศสหรัฐอเมริกา,"""N""",,No,"Y = ใช่, N = ไม่ใช่ "
+,No,No,34,cust_us_person_vat,No,Bool,1,,,เป็นบุคคลที่มีหน้าที่เสียภาษีให้แก่ประเทศสหรัฐอเมริกา,"""Y""",,No,"Y = ใช่, N = ไม่ใช่ "
+,No,No,35,cust_us_person_183,No,Bool,1,,,เป็นบุคคลที่มีถิ่นที่อยู่ในประเทศอเมริกา อย่างน้อย 183 วัน ในปีปฏิทินที่ผ่านมา,"""N""",,No,"Y = ใช่, N = ไม่ใช่ "
+,No,No,36,cust_address_permanent,No,String,500,,,ที่อยู่ตามบัตรประชาชนของผู้ชำระเบี้ยประกันภัย,"""234 หมู่10""",,Yes,
+,No,No,37,cust_sub_district_permanent,No,String,2,,,รหัสตำบล ที่อยู่ตามบัตรประชาชนของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,38,cust_district_permanent,No,String,2,,,รหัสอำเภอ ที่อยู่ตามบัตรประชาชนของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,39,cust_province_permanent,No,String,2,,,รหัสจังหวัดที่อยู่ตามบัตรประชาชนของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,40,cust_address_work,No,String,500,,,ที่อยู่บริษัทของผู้ชำระเบี้ยประกันภัย,"""55 หมู่บ้านลมโชย ต.ห้วยทรายเหนือ อ.เมืองเก่า จ.เชียงใหม่ใต้ 50320""",,Yes,
+,No,No,41,cust_sub_district_work,No,String,2,,,รหัสตำบล ที่อยู่หลักตามกรมธรรม์ของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,42,cust_district_work,No,String,2,,,รหัสอำเภอ ที่อยู่หลักตามกรมธรรม์ของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,43,cust_province_work,No,String,2,,,รหัสจังหวัด ที่อยู่หลักตามกรมธรรม์ของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,44,cust_address_current,No,String,500,,,ที่อยู่ปัจจุบันของผู้ชำระเบี้ยประกันภัย,"""999/1 ถนนสุขใจ ต.ท่าคลอง อ.เมืองทอง จ.กรุงพนัส 11020""",,Yes,
+,No,No,45,cust_sub_district_current,No,String,2,,,รหัสตำบลที่อยู่ปัจจุบันของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,46,cust_district_current,No,String,2,,,รหัสอำเภอ ที่อยู่ปัจจุบันของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+,No,No,47,cust_province_current,No,String,2,,,รหัสจังหวัดที่อยู่ปัจจุบันของผู้ชำระเบี้ยประกันภัย 2 หลัก,"""00""",ภาคผนวก ค - Location Code,Yes,อ้างอิงเอกสารภาคผนวก ค - ตาราง รหัส Location Code 
+ผู้เอาประกัน (Insured),,,,,,,,,,,,,,
+,No,No,1,insrd_cov_plan_seq,No,number (int),,,,ลำดับแผน (กรณี ประกันกลุ่มจะมีมากกว่า 1 แผน),1,,No,ระบุเลข cov_plan_seq ที่ต้องการ Mapping 
+,No,No,2,insrd_seq,Yes,number (int),,,,ลำดับผู้เอาประกันภัย,1,,No,กรณีประกันกลุ่มยังไม่มีข้อมูล insured (แบบ un-name) ให้ส่งข้อมูล ลำดับที่ 0 ชื่อยังไม่ระบุ และ เลขบัตรประชาชน 0000000000000
+,No,No,3,insrd_type,Yes,String,20,,,ประเภทผู้เอาประกันภัย,"""P""",ภาคผนวก ก - CustomerType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,4,insrd_id_type,Yes,String,20,,,ประเภทเอกสารระบุตัวตน,"""01""",ภาคผนวก ก - IdentificationType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,5,insrd_id,Yes,String,50,,,เลขประจำตัวประชาชน/เลขทะเบียนนิติบุคคล ของผู้เอาประกันภัย,"""1209700608854""",,Yes,
+,No,No,6,insrd_first_name,Yes,String,80,,,ชื่อผู้เอาประกันภัย,"""สวัสดี""",,Yes,
+,No,No,7,insrd_last_name,Yes,String,80,,,นามสกุลผู้เอาประกันภัย,"""ทวีสุข""",,Yes,
+,No,No,8,insrd_age,No,number (int),,,,อายุ (ล่าสุดที่เก็บในระบบ บริษัทประกันชีวิต),62,,No,
+,No,No,9,insrd_birthday,Yes,DateTime,,,,วันเกิด,"""1995-06-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) กรณีประกันเดี่ยวจะ Validate ต้องมีข้อมูล"
+,No,No,10,insrd_gender,Yes,String,20,,,เพศ,"""01""",ภาคผนวก ก - Gender,No,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,11,insrd_address,Yes,String,500,,,ที่อยู่หลักตามกรมธรรม์ของผู้เอาประกันภัย,"""45/1""",,Yes,
+,No,No,12,insrd_sub_district,No,String,2,,,รหัสตำบล ที่อยู่หลักตามกรมธรรม์ของผู้เอาประกันภัย 2 หลัก,"""05""",ภาคผนวก ค -  Location Code ,Yes,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,13,insrd_district,No,String,2,,,รหัสอำเภอ ที่อยู่หลักตามกรมธรรม์ของผู้เอาประกันภัย 2 หลัก,"""02""",ภาคผนวก ค -  Location Code ,Yes,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,14,insrd_province,Yes,String,2,,,รหัสจังหวัด ที่อยู่หลักตามกรมธรรม์ของผู้เอาประกันภัย 2 หลัก,"""10""",ภาคผนวก ค -  Location Code ,Yes,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,15,insrd_zip_code,No,String,50,,,รหัสไปรษณีย์,"""20000""",,Yes,
+,No,No,16,insrd_country_code,Yes,String,20,,,รหัสประเทศ,"""THA""",ภาคผนวก ก - Country,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,17,insrd_phone_number,No,String,100,,,เบอร์โทรศัพท์บ้านหรือสำนักงาน,"""02 120 5512 ต่อ 785""",,Yes,หากส่งข้อมูลจะตรวจว่า ความยาวไม่ต่ำกว่า 6 ตัวอักษร
+,No,No,18,insrd_mobile_number,No,String,100,,,เบอร์โทรศัพท์มือถือ,"""+66 920051596""",,Yes,หากส่งข้อมูลจะตรวจว่า ความยาวไม่ต่ำกว่า 6 ตัวอักษร
+,No,No,19,insrd_email,No,String,50,,,อีเมล์,"""emp_cn@clickfuture.com""",,Yes,ให้ส่งค่าที่ถูกต้องตาม email format
+,No,No,20,insrd_issued_age,Yes,number (int),,,,อายุขณะเริ่มเอาประกันภัย ตามที่บริษัทประกันชีวิตใช้คิดเบี้ยประกันภัย,62,,No,"(1) บริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(2) ถ้า pol_approved_date (วันที่อนุมัติ) มีค่าต้องนำส่งข้อมูลนี้
+(3) ถ้าหากเป็นประกันรายบุคคลบริษัทต้องนำส่งข้อมูลนี้"
+,No,No,21,insrd_race,No,String,30,,,เชิ้อชาติ,"""ไทย""",,No,
+,No,No,22,insrd_nationality,No,String,30,,,สัญชาติ,"""ไทย""",,No,
+,No,No,23,insrd_religion,No,String,30,,,ศาสนา,"""พุทธ""",,No,
+,No,No,24,insrd_occupation_level,Yes,String,20,,,ชั้นอาชีพผู้เอาประกันภัย,"""01""",ภาคผนวก ก - OccupationLevel,No,"(1) กรณีประกันกลุ่ม ถ้าไม่ได้เก็บข้อมูลแยกผู้เอาประกัน ต้องระบุชั้นอาชีพที่ใช้ในการคำนวนเบี้ยประกันกลุ่ม
+(2) หากมีข้อมูลบริษัทจำเป็นต้องส่งข้อมูล มีผลต่อการค้นหาข้อมูลกรมธรรม์
+(3) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,25,insrd_occupation_level_other_detail,No,String,50,,,รายละเอียดชั้นอาชีพผู้เอาประกันภัย (กรณีระบุชั้นอาชีพเป็น อื่นๆ),"""ไม่มีข้อมูล""",,No,กรณี insrd_occupation_level มีค่า = 99 ให้ส่งค่าที่ไม่ใช่ Empty string หรือ White space
+,No,No,26,insrd_occupation,No,String,500,,,อาชีพผู้เอาประกันภัย,"""โปรแกรมเมอร์""",,No,
+,No,No,27,insrd_job,No,String,50,,,ลักษณะงานที่ทำ,"""โปรแกรม""",,No,
+,No,No,28,insrd_position,No,String,30,,,ตำแหน่ง,"""ผู้จัดการทั่วไป""",,No,
+,No,No,29,insrd_business_type,Yes,String,200,,,ลักษณะธุรกิจ,"""สื่อ""",,No,
+,No,No,30,insrd_income_per_year,No,number (decimal),,,,รายได้ต่อปี (บาท),450000.8,,No,
+,No,Yes,31,insrd_pol_sub_ids,No,[String],80,,,เลขที่สำหรับอ้างอิงข้อมูล Sub Policy (เฉพาะพิเศษ),"[""A|1"",""B|1""]",,Yes,
+,Yes,Yes,32,insrd_beneficiaries,Yes(C),[InsuredBeneficiary],5000,25,"5,000",รายการผู้รับผลประโยชน์ภายใต้ผู้เอาประกัน,,,No,"(1) บริษัทต้องนำส่งข้อมูลผู้รับผลประโยชน์ต้องนำส่งข้อมูลที่ตารางใดตารางหนึ่งเป็นอย่างน้อย insrd_beneficiaries หรือ beneficiaries
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล InsuredBeneficiary รายการผู้รับผลประโยชน์ภายใต้ผู้เอาประกัน ลำดับที่ 1-5"
+,No,No,33,standard_risk,Yes,String,20,,,ภัยมาตรฐาน,"""01""",ภาคผนวก ก - StandardRisk,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,34,medical,Yes,String,20,,,ตรวจสุขภาพก่อนการทำประกันภัย,"""01""",ภาคผนวก ก - Medical,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+ผู้รับผลประโยชน์ภายใต้ผู้เอาประกัน (InsuredBeneficiary),,,,,,,,,,,,,,
+,No,No,1,insrd_beneficiary_seq_no,Yes,number (int),,,,ลำดับผู้รับประโยชน์,1,,No,
+,No,No,2,insrd_beneficiary_name,Yes,String,100,,,ให้รายงานเป็น ชื่อบุคคล/ชื่อองค์กร/เลขบัตรประชาชน หรือระบุข้อความ เช่น “ทายาทโดยธรรม” เป็นต้น,"""นางสาวมานี ทวีสุข""",,Yes,
+,No,No,3,insrd_beneficiary_relation,Yes,String,20,,,ความสัมพันธ์ระหว่างผู้รับผลประโยชน์กับผู้เอาประกันภัย,"""01""",ภาคผนวก ก - RelationshipType,No,"(1) กรณีระบุ insrd_beneficiary_name = “ทายาทโดยธรรม” insrd_beneficiary_relation ให้ส่งค่า = 14 ทายาทโดยธรรมเท่านั้น
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,4,insrd_beneficiary_relation_other_detail,No,String,50,,,รายละเอียดความสัมพันธ์ระหว่างผู้รับผลประโยชน์กับผู้เอาประกันภัย (กรณีระบุความสัมพันธ์เป็น อื่นๆ),"""ค่อนข้างอธิบายยาก""",,No,กรณี insrd_beneficiary_name มีค่า = 99 ให้ส่งค่าที่ไม่ใช่ Empty string หรือ White space
+,No,No,5,insrd_benefit_ratio,No,number (decimal),,,,(ร้อยละ)สัดส่วนการรับผลประโยชน์,25,,No,"(1) กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+(2) กรณี Field นี้มีค่าส่งมา รวมกันทุกคนต้องได้ 100.00"
+ความคุ้มครอง สัญญาหลัก สัญญาเพิ่มเติม หรือ บันทึกสลักหลัง (Sub Policy),,,,,,,,,,,,,,
+,No,No,1,sub_pol_id,Yes,String,80,,,เลขที่สำหรับอ้างอิงข้อมูล Sub Policy,"""SM000001_00001""",,Yes,
+,No,No,2,sub_pol_type,Yes,String,20,,,ประเภทของรายการ Sub Policy,"""A""",ภาคผนวก ก - SubPolicyType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,3,sub_pol_ppt,Yes,String,50,,re,รหัสแบบของผลิตภัณฑ์ (OIC Plancode อ้างอิงจาก I-Serff),"""1002S000000351""",,No,API MASTER: I-SERFF (OIC Plancode ที่ได้รับอนุมัติจากระบบ I-Serff)
+,No,No,4,sub_pol_start_date,Yes,DateTime,,,,วันที่เริ่มต้นความคุ้มครองสัญญาเพิ่มเติม,"""2021-05-01T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,5,sub_pol_end_date,Yes,DateTime,,,,วันที่สิ้นสุดความคุ้มครองสัญญาเพิ่มเติม,"""2022-04-30T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,6,sub_pol_sum_insured_per_year_exclude,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัย/จำนวนเงินผลประโยชน์ สูงสุดต่อปี (บาท) (เหมาจ่ายไม่รวมกับที่ระบุเพิ่มใน cov_sum_insured_per_coverage_per_year ในตาราง Coverage),0,,No,
+,No,No,7,sub_pol_sum_insured_per_year_include,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัย/จำนวนเงินผลประโยชน์ สูงสุดต่อปี (บาท) (เหมาจ่าย โดยผลรวมcov_sum_insured_per_coverage_per_year ในตาราง Coverage ต้องไม่เกินจำนวนเงินนี้) ,1500000.15,,No,
+,Yes,Yes,8,policy_cov_plan_seqs,No,[PolicyCovPlanSeq],,50,200,ลำดับแผน (กรณี ประกันกลุ่มจะมีมากกว่า 1 แผน),,,No,ต้องนำส่งข้อมูลตามชุดข้อมูล PolicyCovPlanSeq ลำดับแผน (กรณี ประกันกลุ่มจะมีมากกว่า 1 แผน) ลำดับที่ 1-7
+,Yes,Yes,9,coverages,Yes(C),[SubPolicyCoverage],,"1,000",,รายการความคุ้มครอง,,,No,"(1) บริษัทต้องนำส่งข้อมูลความคุ้มครองที่ตารางใดตารางหนึ่งเป็นอย่างน้อย Coverage หรือ Coverage Plan Coverage
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล SubPolicyCoverage รายการความคุ้มครอง ลำดับที่ 1-12"
+ลำดับแผน (กรณี ประกันกลุ่มจะมีมากกว่า 1 แผน) (Policy Coverage Plan Sequence),,,,,,,,,,,,,,
+,No,No,1,cov_plan_seq,Yes,number (int),,,,ลำดับแผน (กรณี ประกันกลุ่มจะมีมากกว่า 1 แผน),1,,No,รองรับการส่งข้อมูลสัญญาหลักที่มีมากกว่า 1 แผนความคุ้มครอง โดยระบบจะตรวจสอบลำดับแผนต้องไม่ซ้ำกัน
+,No,No,2,cov_plan_name,Yes,String,80,,,ชื่อแผน,"""PL006-ความคุ้มครองการประกันชีวิต 6""",,No,
+,No,No,3,cov_plan_sum_insured,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัย (บาท),400000,,No,
+,No,No,4,cov_plan_maturity_benefit,Yes,number (decimal),,,,จำนวนเงินครบกำหนดสัญญา (บาท),12000000,,No,
+,No,No,5,cov_plan_survival_benefit_min,Yes,number (decimal),,,,จำนวนเงินคืนระหว่างสัญญา (น้อยสุด) (บาท),2500.25,,No,
+,No,No,6,cov_plan_survival_benefit_max,Yes,number (decimal),,,,จำนวนเงินคืนระหว่างสัญญา (มากสุด) (บาท),5000,,No,
+,Yes,Yes,7,coverages_under_plans,Yes(C),[PlanCoverage],,500,2500,รายการความคุ้มครองภายใต้ลำดับแผน,,,No,"(1) หากมีการนำส่งข้อมูล ลำดับแผน (policy_cov_plan_seqs) ต้องนำส่ง ความคุ้มครองภายใต้ลำดับแผน (coverages_under_plans)
+(2) บริษัทต้องนำส่งข้อมูลความคุ้มครองที่ตารางใดตารางหนึ่งเป็นอย่างน้อย Coverage หรือ Coverage Plan Coverage
+(3) ต้องนำส่งข้อมูลตามชุดข้อมูล PlanCoverage รายการความคุ้มครองภายใต้ลำดับแผน ลำดับที่ 1-12"
+ความคุ้มครองภายใต้ลำดับแผน (Coverage Plan Coverage),,,,,,,,,,,,,,
+,No,No,1,cov_plan_cov_code,Yes,String,20,,,รหัสความคุ้มครอง,"""C20-003""",ภาคผนวก ก - CoverageCode,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,2,cov_plan_cov_detail,Yes,String,300,,,ชื่อความคุ้มครอง,"""J0003 ทุพพลภาพชั่วคราวสิ้นเชิง""",,Yes,กรณีระบุ cov_plan_cov_code ที่มีความหมายเป็น อื่น ๆ ต้องระบุรายละเอียดจริงที่จ่ายเคลมผู้เอาประกัน
+,No,No,3,cov_plan_cov_amt,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัย/จำนวนเงินผลประโยชน์ (บาท),1000000,,Yes,
+,No,No,4,cov_plan_cov_sum_insured_per_coverage_per_year,No,number (decimal),,,,จำนวนเงินเอาประกันภัย/จำนวนเงินผลประโยชน์ สูงสุดในแต่ละหมวดความคุ้มครอง ต่อปี (บาท),205563,,No,
+,No,No,5,cov_plan_cov_sum_insured_per_coverage_per_time,No,number (decimal),,,,C,221523.25,,No,
+,No,No,6,cov_plan_cov_co_payment,No,number (decimal),,,,จำนวนเงินผลประโยชน์ที่ระบุเป็นร้อยละ ความรับผิดระหว่างบริษัทและผู้เอาประกันภัย,50,,No,
+,No,No,7,cov_plan_cov_deductible_amount,No,number (decimal),,,,จํานวนเงินความรับผิดส่วนแรกตามหมวดความคุ้มครอง (บาท),5000.5,,No,
+,No,No,8,cov_plan_cov_deductible_detail,No,String,200,,,คำอธิบายความรับผิดส่วนแรกตามหมวดความคุ้มครอง,"""รายละเอียด""",,No,
+,No,No,9,cov_plan_cov_number_of_day,No,number (int),,,,จํานวนวันสูงสุดต่อการรักษาตัวแต่ละครั้ง (วัน),7,,No,
+,No,No,10,cov_plan_cov_cover_year,Yes(C),number (int),,,,ระยะเวลาเอาประกันภัย (ปี),50,,No,ถ้าsub_pol_type  มีค่าเป็น ความคุ้มครองหลัก (Main Policy) ต้องนำส่งข้อมูลนี้
+,No,No,11,cov_plan_cov_payment_year,Yes(C),number (int),,,,ระยะเวลาชำระเบี้ยประกันภัย (ปี),25,,No,ถ้าsub_pol_type  มีค่าเป็น ความคุ้มครองหลัก (Main Policy) ต้องนำส่งข้อมูลนี้
+,No,No,12,cov_plan_cov_claim_status,No,String,20,,,สถานะการเคลมของความคุ้มครอง ,"""2""",ภาคผนวก ก - PolCovStatus,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+ความคุ้มครอง (Coverage),,,,,,,,,,,,,,
+,No,No,1,cov_code,Yes,String,20,,,รหัสความคุ้มครอง,"""C20-003""",ภาคผนวก ก - CoverageCode,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,2,cov_detail,Yes,String,300,,,ชื่อความคุ้มครอง,"""J0003 ทุพพลภาพชั่วคราวสิ้นเชิง""",,Yes,
+,No,No,3,cov_amt,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัย/จำนวนเงินผลประโยชน์ (บาท),221523.25,,Yes,ส่งข้อมูลเป็นตัวเลข และจุดทศนิยมไม่เกิน 2 ตำแหน่ง
+,No,No,4,cov_sum_insured_per_coverage_per_year,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัย/จำนวนเงินผลประโยชน์ สูงสุดในแต่ละหมวดความคุ้มครอง ต่อปี (บาท),205563,,No,
+,No,No,5,cov_sum_insured_per_coverage_per_time,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัย/จำนวนเงินผลประโยชน์ สูงสุดในแต่ละหมวดความคุ้มครอง ต่อครั้ง หรือต่อวัน (บาท),221523.25,,No,
+,No,No,6,cov_co_payment,No,number (decimal),,,,จำนวนเงินผลประโยชน์ที่ระบุเป็นร้อยละ ความรับผิดระหว่างบริษัทและผู้เอาประกันภัย,50.89,,No,
+,No,No,7,cov_deductible_amount,No,number (decimal),,,,จํานวนเงินความรับผิดส่วนแรกตามหมวดความคุ้มครอง (บาท),5000.5,,No,
+,No,No,8,cov_deductible_detail,No,String,200,,,คำอธิบายความรับผิดส่วนแรกตามหมวดความคุ้มครอง,"""รายละเอียด""",,No,
+,No,No,9,cov_number_of_day,No,number (int),,,,จํานวนวันสูงสุดต่อการรักษาตัวแต่ละครั้ง (วัน),7,,No,
+,No,No,10,cov_cover_year,Yes,number (int),,,,ระยะเวลาเอาประกันภัย (ปี),50,,No,ถ้าsub_pol_type  มีค่าเป็น ความคุ้มครองหลัก (Main Policy) ต้องนำส่งข้อมูลนี้
+,No,No,11,cov_payment_year,Yes,number (int),,,,ระยะเวลาชำระเบี้ยประกันภัย (ปี),25,,No,ถ้าsub_pol_type  มีค่าเป็น ความคุ้มครองหลัก (Main Policy) ต้องนำส่งข้อมูลนี้
+,No,No,12,cov_claim_status,No,String,20,,,สถานะการเคลมของความคุ้มครอง ,"""02""",ภาคผนวก ก - PolCovStatus,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+ผู้รับผลประโยชน์ (Beneficiary),,,,,,,,,,,,,,
+,No,No,1,beneficiary_seq_no,Yes,number (int),,,,ลำดับผู้รับประโยชน์,1,,No,
+,No,No,2,beneficiary_name,Yes,String,100,,,ให้รายงานเป็น ชื่อบุคคล/ชื่อองค์กร/เลขบัตรประชาชน หรือระบุข้อความ เช่น “ทายาทโดยธรรม” เป็นต้น,"""นางสาวมานี สวัสดี""",,Yes,
+,No,No,3,beneficiary_relation,Yes,String,20,,,ความสัมพันธ์ระหว่างผู้รับผลประโยชน์กับผู้เอาประกันภัย,"""01""",ภาคผนวก ก - RelationshipType,No,"(1) กรณีระบุ beneficiary_name = “ทายาทโดยธรรม” beneficiary_relation ให้ส่งค่า = 14 ทายาทโดยธรรมเท่านั้น
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,4,beneficiary_relation_other_detail,No,String,50,,,รายละเอียดความสัมพันธ์ระหว่างผู้รับประโยชน์กับผู้เอาประกันภัย (กรณีระบุความสัมพันธ์เป็น อื่นๆ),"""ค่อนข้างอธิบายยาก""",,No,กรณี beneficiary_name มีค่า = 99 ให้ส่งค่าที่ไม่ใช่ Empty string หรือ White space
+,No,No,5,benefit_ratio,No,number (decimal),,,,(ร้อยละ) สัดส่วนการรับผลประโยชน์,25,,No,"(1) กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+(2) กรณี Field นี้มีค่าส่งมา รวมกันทุกคนต้องได้ 100.00"
+สลักหลังของกรมธรรม์ (Endorsement),,,,,,,,,,,,,,
+,No,No,1,endorse_id,Yes(C),String,30,,,เลขที่สลักหลัง (ถ้ามี) / ไม่มีให้ส่งเป็นเลขที่ identify ข้อมูลสลักหลังได้,"""EN000001_00001""",,No,หากมีข้อมูลสลักหลังกรมธรรม์ บริษัทประกันจำเป็นต้องนำส่งข้อมูล
+,No,No,2,endorse_type_1,Yes(C),String,20,,,ประเภทสลักหลัง level 1,"""01""","ภาคผนวก ก - EndorseType
+""01"" สลักหลังกรมธรรม์หลัก
+""02"" สลักหลังสัญญาเพิ่มเติม",No,"(1) ถ้าบริษัทมีข้อมูลประเภทสลักหลังจำเป็นต้องระบุด้วย
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,3,endorse_type_2,Yes(C),String,20,,,ประเภทสลักหลัง level 2,"""02""","ภาคผนวก ก - EndorseSubType
+""01"" สลักหลังกระทบเบี้ย
+""02"" สลักหลังไม่กระทบเบี้ย",No,"(1) ถ้าบริษัทมีข้อมูลประเภทสลักหลังจำเป็นต้องระบุด้วย
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,4,endorse_sub_pol_id,Yes(C),String,80,,,เลขที่สำหรับอ้างอิงข้อมูล submainpolicy,"""SM000001_00001""",,No,กรณีเป็นบันทึกสลักหลังกระทบเบี้ย ให้นำส่งเลขสัญญา sub_pol_id Ref. Submainpolicy 
+,No,No,5,endorse_detail,No,String,200,,,สรุปสาระสำคัญ,"""สาระที่สำคัญ""",,Yes,
+,No,No,6,endorse_status,No,String,30,,,สถานะของสลักหลัง (ถ้ามี),"""01""",,No,
+การกู้ยืมของกรมธรรม์ (Loan),,,,,,,,,,,,,,
+,No,No,1,loan_id,Yes,String,30,,,เลขที่การกู้ (ถ้ามี) / ไม่มีให้ส่งเป็นเลขที่ identify ข้อมูลการกู้ได้,"""L0000001_00001""",,Yes,
+,No,No,2,loan_type,Yes,String,20,,,ประเภทการกู้,"""APL""",ภาคผนวก ก - LoanType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,3,loan_date,Yes,DateTime,,,,วันที่กู้,"""2021-03-01T15:00:00+07:00""
+""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601""",,No,
+,No,No,4,loan_interest_rate,Yes,number (decimal),,,,ดอกเบี้ยประกันภัยที่กู้ ส่งข้อมูลเป็นร้อยละ (%),20,,No,"(1) กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+(2) กรณีดอกเบี้ยมีการเปลี่ยนแปลงต้องส่ง"
+,No,No,5,loan_amount,Yes,number (decimal),,,,จำนวนเงินที่กู้ (บาท),57000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่า 0.00
+,No,No,6,loan_interest_amount,Yes,number (decimal),,,,จำนวนเงินดอกเบี้ยประกันภัย (บาท),2000,,No,"(1) กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+(2) กรณี ดอกเบี้ยประกันภัยที่กู้ (%)มีการเปลี่ยนแปลงต้องส่งอัพเดตจำนวนเงินดอกเบี้ยประกันภัย
+(3) กรณีที่ส่งรายการการจ่ายกู้ยืมของกรมธรรม์ ต้องส่งอัพเดตจำนวนเงินดอกเบี้ยประกันภัย ตามเงินต้นที่เปลี่ยนแปลงไป"
+,No,No,7,loan_status,Yes,String,20,,,สถานะของการกู้,"""02""",ภาคผนวก ก - LoanStatus,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+การจ่ายกู้ยืมของกรมธรรม์ (Loan Payment),,,,,,,,,,,,,,
+,No,No,1,loan_payment_id,No,String,30,,,เลขที่การชำระเงินกู้ (ถ้ามี) / ไม่มีให้ส่งเป็นเลขที่ identify ข้อมูลการจ่ายเงินกู้ได้,"""L00001_PM00002""",,No,
+,No,No,2,loan_payment_date,Yes,DateTime,,,,วันที่ชำระ,"""2021-07-27T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,3,loan_payment_amount,Yes,number (decimal),,,,ยอดคืนเงินทั้งหมด (เงินต้น + ดอกเบี้ยประกันภัย) (บาท),59000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+,No,No,4,loan_payment_interest,Yes,number (decimal),,,,ยอดคืนเงินสำหรับดอกเบี้ยประกันภัย (บาท),2000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่า 0.00
+,No,No,5,loan_payment_principal,Yes,number (decimal),,,,ยอดคืนเงินกู้ (เงินต้นไม่รวมดอกเบี้ยประกันภัย) (บาท),57000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+การลงทุนของกรมธรรม์ (Investment),,,,,,,,,,,,,,
+,No,No,1,inv_transaction_date,Yes,DateTime,,,,วันที่ทำรายการ,"""2021-02-01T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,2,inv_transaction_type,Yes,String,20,,,ประเภทการทำรายการการลงทุน,"""B""",ภาคผนวก ก - TransactionType,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,Yes,Yes,3,policy_fund_codes,No,[PolicyFunCode],,25,"10,000",รายการข้อมูลกองทุน,,,No,ต้องนำส่งข้อมูลตามชุดข้อมูล PolicyFunCode รายการข้อมูลกองทุน ลำดับที่ 1-8
+กองทุน (Policy Fund Code),,,,,,,,,,,,,,
+,No,No,1,inv_fund_code,No,String,30,,,รหัสกองทุน,"""CLM0029384""",,No,
+,No,No,2,inv_fund_unit,Yes,number (decimal),,,,จำนวนหน่วย,60,,Yes,
+,No,No,3,inv_fund_nav,Yes,number (decimal),,,,มูลค่าหน่วยลงทุน (บาท),105.5,,Yes,
+,No,No,4,inv_fund_thai_name,Yes,String,100,,,ชื่อภาษาไทย (Thai Name),"""Test Update in DB with Max char over 60""",,Yes,
+,No,No,5,inv_fund_eng_name,Yes,String,100,,,ชื่อภาษาอังกฤษ(English Name),"""Test Update in DB with Max char over 60""",,Yes,
+,No,No,6,inv_fund_type,Yes,String,200,,,ประเภทกองทุน,"""01""",ภาคผนวก ก - InvFundType,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,7,inv_fund_amc,Yes,String,60,,,บริษัทจัดการกองทุนรวม,"""Tisco co.,td""",,Yes,
+,No,No,8,inv_fund_data_status,No,String,20,,,สถานะของข้อมูล,"""01""",ภาคผนวก ก - FundStatus,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+การชำระเบี้ย (Payment),,,,,,,,,,,,,,
+,No,No,1,pmt_refer_code_of_company,Yes,String,50,,,รหัสอ้างอิงการชำระเบี้ยประกันภัย,"""P100010_00001""",,No,
+,No,No,2,pmt_transaction_status,Yes,String,1,,,สถานะของการส่งข้อมูล,"""N""",ภาคผนวก ก - TransactionStatus,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,3,pmt_company_id,Yes,String,4,,,รหัสบริษัทประกันชีวิต,"""400""",,No,
+,No,No,4,pmt_pol_id,Yes,String,30,,,เลขที่กรมธรรม์ (สำหรับอ้างอิงการชำระเบี้ยประกันภัย),"""T222000222""",,Yes,
+,No,No,5,pmt_pol_refer_code_of_company,Yes,String,50,,,รหัสอ้างอิงกรมธรรม์,"""TEST100010_00001""",,Yes,
+,No,No,6,pmt_id,Yes,String,30,,,เลขที่การชำระเบี้ยประกันภัย,"""P100010_00001""",,Yes,
+,No,No,7,pmt_type,Yes,String,20,,,ประเภทการชำระเบี้ยประกันภัย,"""01""",ภาคผนวก ก - PaymentType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,8,pmt_direct_premium,Yes,String,20,,,ประเภทเบี้ยประกันภัยรับตรง,"""02""",ภาคผนวก ก - PaymentDirectType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,9,pmt_premium_payment_period_year,Yes,number (int),,,,จำนวนปีที่ต้องชำระเบี้ยประกันภัย,10,,Yes,ตรวจสอบกับตาราง coverage : cov_payment_year ว่าค่าตรงกันหรือไม่
+,No,No,10,pmt_premium_payment_year,Yes,number (int),,,,ชำระเบี้ยประกันภัยปีที่,5,,No,
+,No,No,11,pmt_payment_period,Yes,String,20,,,งวดการชำระเบี้ยประกันภัย,"""02""",ภาคผนวก ก - PaymentPeriod,Yes,"(1) ตรวจสอบกับตาราง policy : pol_payment_period ว่าค่าตรงกันหรือไม่
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,Yes,Yes,12,payment_period_seqs,Yes,[PaymentPeriod],,50,,รายการข้อมูลงวดที่ชำระเบี้ยประกันภัย,,,No,ต้องนำส่งข้อมูลตามชุดข้อมูล PaymentPeriod รายการข้อมูลงวดที่ชำระเบี้ยประกันภัย ลำดับที่ 1-20
+งวดการชำระเบี้ย (Payment Period Seq),,,,,,,,,,,,,,
+,No,No,1,pmt_prd_premium_seq,Yes,number (int),,,,ชำระเบี้ยประกันภัยงวดที่,1,,Yes,"ข้อมูลการชำระเบี้ย pmt_prd_premium_seq ต้องเรียงลำดับเสมอ 1,2,3…n"
+,No,No,2,pmt_prd_premium_outstanding_payment,Yes,number (int),,,,จำนวนการชำระเบี้ยประกันภัย (คงเหลือทั้งหมดกี่งวดในปีนั้น),3,,Yes,
+,No,No,3,pmt_prd_premium_amount,Yes,number (decimal),,,,จำนวนเบี้ยประกันภัยรวมที่ชำระจริง (รวมภาษีและอากร) (บาท),10000,,Yes,Field นี้ให้ส่งค่าที่มากกว่า 0.00
+,No,No,4,pmt_prd_premium_amount_tax,Yes,number (decimal),,,,จำนวนภาษีและอากร (บาท),0,,Yes,Field นี้ให้ส่งค่าที่มากกว่า 0.00
+,No,No,5,pmt_prd_premium_amount_life,Yes,number (decimal),,,,จำนวนเบี้ยประกันภัยสำหรับความคุ้มครองชีวิต (ไม่รวมภาษีและอากร) (บาท),1000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่า 0.00
+,No,No,6,pmt_prd_premium_amt_saving,Yes,number (decimal),,,,จำนวนเบี้ยประกันภัยสำหรับการออม (ไม่รวมภาษีและอากร) (บาท),15000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+,No,No,7,pmt_prd_premium_amt_investment,Yes,number (decimal),,,,จำนวนเบี้ยประกันภัยสำหรับการลงทุน (ไม่รวมภาษีและอากร) (บาท),21000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+,No,No,8,pmt_prd_premium_amount_other,Yes,number (decimal),,,,ค่าใช้จ่ายอื่นๆ (ไม่รวมภาษีและอากร) (บาท),100.75,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+,No,No,9,pmt_prd_premium_amount_com,Yes,number (decimal),,,,จำนวนเงินค่าจ้าง หรือค่าบำเหน็จ (ไม่รวมภาษีและอากร) (บาท),1000,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+,No,No,10,pmt_prd_premium_amt_interest,No,number (decimal),,,,จำนวนดอกเบี้ยประกันภัยกรณีชำระล่าช้า (ไม่รวมภาษีและอากร) (บาท),500,,Yes,กรณี Field นี้มีค่าส่งมา ให้ส่งค่าที่มากกว่าหรือเท่ากับ 0.00
+,No,No,11,pmt_prd_premium_date,Yes,DateTime,,,,วันที่ชำระเบี้ยประกันภัย,"""2021-06-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,12,pmt_prd_premium_due_date,Yes,DateTime,,,,วันที่ครบกำหนดชำระเบี้ยประกันภัยครั้งต่อไป,"""2022-06-16T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,13,pmt_prd_premium_temp_receipt_date,Yes(C),DateTime,,,,วันที่ชำระเบี้ยประกันภัยตามใบรับเงินชั่วคราว,"""2021-08-15T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,กรณีระบุ ช่องทางการชำระเบี้ยประกันภัย (pmt_prd_premium_channel) เป็น ตัวแทน (01) หรือ นายหน้า (02) ต้องส่ง วันที่ชำระเบี้ยประกันภัยตามใบรับเงินชั่วคราว (pmt_prd_premium_temp_receipt_date)
+,No,No,14,pmt_prd_premium_receipt_date,Yes,DateTime,,,,วันที่ชำระเบี้ยประกันภัยตามใบเสร็จรับเงิน,"""2021-08-30T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,Yes,
+,No,No,15,pmt_prd_premium_temp_receipt_number,Yes(C),String,30,,,เลขที่ใบรับเงินชั่วคราว,"""slip-temp00154-5523""",,Yes,กรณีระบุ ช่องทางการชำระเบี้ยประกันภัย (pmt_prd_premium_channel) เป็น ตัวแทน (01) หรือ นายหน้า (02) ต้องส่ง เลขที่ใบรับเงินชั่วคราว (pmt_prd_premium_temp_receipt_number)
+,No,No,16,pmt_prd_premium_receipt_number,Yes,String,30,,,เลขที่ใบเสร็จรับเงิน,"""slip-00154-5523""",,Yes,
+,No,No,17,pmt_prd_premium_channel,Yes,String,30,,,ช่องทางการชำระเบี้ยประกันภัย,"""05""",ภาคผนวก ก - PaymentChannel,Yes,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,18,pmt_prd_premium_channel_detail,Yes(C),String,200,,,รายละเอียดช่องทางการชำระเบี้ยประกันภัย (กรณีระบุช่องทางการชำระเบี้ยประกันภัยเป็น อื่นๆ),"""951753""",,Yes,กรณีระบุช่องทางการชำระเบี้ยประกันภัย (pmt_prd_premium_channel) เป็น อื่นๆ ต้องระบุ รายละเอียดช่องทางการชำระเบี้ยประกันภัย (pmt_prd_premium_channel_detail)
+,Yes,Yes,19,payment_premium_type_riders,No,[PaymentRider],,100,,รายการการจ่ายเบี้ยประกันภัยของสัญญาเพิ่มเติม,,,No,"(1) กรณีกรมธรรม์ไม่มี Rider ห้ามส่งชุดข้อมูลนี้
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล PaymentRider รายการการจ่ายเบี้ยประกันภัยของสัญญาเพิ่มเติม ลำดับที่ 1-2"
+,Yes,Yes,20,payment_premium_type_endorsements,No,[PaymentEndorsement],,100,,รายการการจ่ายเบี้ยประกันภัยของบันทึกสลักหลัง,,,No,"(1) กรณีกรมธรรม์ไม่มี Endorsement ห้ามส่งชุดข้อมูลนี้
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล PaymentEndorsement รายการการจ่ายเบี้ยประกันภัยของบันทึกสลักหลัง ลำดับที่ 1-2"
+การจ่ายเบี้ยสำหรับสัญญาเพิ่มเติม (Payment Premium Type Rider ),,,,,,,,,,,,,,
+,No,No,1,pmt_premium_rid_number,No,String,200,,,เลขที่สำหรับอ้างอิงข้อมูล submainpolicy รายการสัญญาเพิ่มเติม,"""SM000001_00001""",,No,
+,No,No,2,pmt_premium_rid_amount,Yes,number (decimal),,,,จำนวนเบี้ยประกันภัยสำหรับความคุ้มครองตามสัญญาเพิ่มเติม (ไม่รวมภาษีและอากร) (บาท),1995.55,,Yes,
+การจ่ายเบี้ยสำหรับบันทึกสลักหลัง (Payment Premium Type Endorsement ),,,,,,,,,,,,,,
+,No,No,1,pmt_premium_edm_number,No,String,200,,,เลขที่สำหรับอ้างอิงข้อมูล submainpolicy รายการบันทึกสลักหลัง,"""SM000001_00001""",,No,
+,No,No,2,pmt_premium_edm_amount,Yes,number (decimal),,,,จำนวนเบี้ยประกันภัยสำหรับความคุ้มครองตามบันทึกสลักหลัง (ไม่รวมภาษีและอากร) (บาท),2150.5,,Yes,
+การเคลม (Claim),,,,,,,,,,,,,,
+,No,No,1,claim_refer_code_of_company,Yes,String,200,,,รหัสอ้างอิงเคลม,"""CLM001_PMT20231122""",,Yes,
+,No,No,2,claim_transaction_status,Yes,String,1,,,สถานะของการส่งข้อมูล,"""U""",,No,
+,No,No,3,claim_company_id,Yes,String,4,,,รหัสบริษัทประกันชีวิต,"""400""",,Yes,
+,No,No,4,claim_pol_id,Yes,String,30,,,เลขที่กรมธรรม์,"""T222000222""",,Yes,
+,No,No,5,claim_pol_refer_code_of_company,Yes,String,50,,,รหัสอ้างอิงกรมธรรม์,"""TEST100010_00001""",,Yes,
+,No,No,6,claim_id,Yes,String,200,,,รหัสการเคลม,"""CL-001-01""",,Yes,
+,No,No,7,claim_no,Yes,String,200,,,เลขที่รับแจ้งเรื่องเคลม,"""CL-001-01""",,Yes,
+,No,No,8,claim_type,Yes,String,20,,,ประเภทการเคลม,"""02""",ภาคผนวก ก - ClaimType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,9,claim_pol_type,Yes,String,20,,,ระบุแบบผลิตภัณฑ์ที่เคลม,"""PT-10""",ภาคผนวก ก - PolicyType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,10,claim_incurred_date,Yes,DateTime,,,,วันที่เกิดความเสียหายที่ขอเคลม,"""2021-09-20T12:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,11,claim_report_date,Yes,DateTime,,,,วันที่เกิดการขอเคลม หรือวันที่ได้รับการแจ้งเคลมจากสถานพยาบาล,"""2021-10-20T12:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,12,claim_notify_date,Yes(C),DateTime,,,,วันที่เข้ารับการรักษา (ถ้ามี),"""2021-09-20T12:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,กรณีระบุ ชื่อสถานพยาบาล (claim_hospital_name) ต้องส่งวันที่เข้ารับการรักษา (claim_notify_date)
+,No,No,13,claim_discharge_date,Yes(C),DateTime,,,,วันที่ออกจากสถานพยาบาล (ถ้ามี),"""2021-10-20T12:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,กรณีระบุ ชื่อสถานพยาบาล (claim_hospital_name) ต้องส่งวันที่ออกจากสถานพยาบาล (claim_discharge_date)
+,No,No,14,claim_hospital_id,No,String,20,,,รหัสสถานพยาบาลที่เคลม,"""CA0032045""",ภาคผนวก ข - Hospital,No,"(1) รหัสสถานพยาบาลที่เคลม สามารถระบุรหัสสถานพยาบาลได้ทั้งแบบ 5 หลัก หรือรหัสแบบใหม่ 9 หลัก ตามข้อมูลจากสำนักงานปลัดกระทรวงสาธารณสุข โดยสามารถตรวจสอบรหัสได้จาก Master Data ของระบบ IBS Life ซึ่งสามารถดาวน์โหลดได้จากแถบเครื่องมือของรายการเวอร์ชั่นแบบรายงาน หรือที่เว็บไซต์ https://hcode.moph.go.th/dashboard/filter/health_offices
+(2) อ้างอิงเอกสารภาคผนวก ข"
+,No,No,15,claim_hospital_name,Yes(C),String,200,,,ชื่อสถานพยาบาล,"""คลินิกรักษ์ฟัน""",,No,"(1) ให้บริษัทนำส่ง ชื่อสถานพยาบาล
+(2) กรณีไม่ได้ระบุ claim_hospital_id หรือระบุไม่ตรงตาม Master Data บริษัทต้องระบุชื่อสถานพยาบาลให้ตรงกับรายการใน Master Data หากไม่พบชื่อสถานพยาบาลในไฟล์ดังกล่าว กรุณาแจ้งข้อมูลเพิ่มเติมมาที่อีเมล ibs-life@oic.or.th เพื่อดำเนินการเพิ่มข้อมูลในระบบ"
+,No,No,16,claim_doctor_name,No,String,200,,,ชื่อนามสกุล แพทย์ที่รักษา หรือ แพทย์ที่เปิดเคลม,"""นพ.พนมยง ทองโสม""",,No,
+,No,No,17,claim_completion_date,Yes(C),DateTime,,,,วันที่พิจารณาเคลมเสร็จสิ้น,"""2021-10-20T12:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,"กรณี claim_status มีค่า 01 = Paid ทำจ่ายแล้ว, 02 = Accept อนุมัติแล้วรอทำจ่าย, 05 = Reject ปฏิเสธการจ่าย ให้ส่งข้อมูล claim_completion_date"
+,No,No,18,claim_close_date,Yes(C),DateTime,,,,วันที่ปิดเคลม,"""2021-10-20T12:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,"กรณี claim_status มีค่า 01 = Paid ทำจ่ายแล้ว, 05 = Reject ปฏิเสธการจ่าย ให้ส่งข้อมูล claim_close_date"
+,No,No,19,claim_status,Yes,String,20,,,สถานะการเคลม,"""01""",ภาคผนวก ก - ClaimStatus,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,20,claim_reject_reason,Yes(C),String,20,,,รายละเอียดสาเหตุการปฏิเสธ (claim_status = R),"""02""",ภาคผนวก ก - ClaimRejectType,No,"(1) กรณี claim_status มีค่า 05 = Reject ปฏิเสธการจ่าย ให้ส่งค่าตามตาราง Master Data: ClaimRejectType เท่านั้น
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,21,claim_document_link,No,String,500,,,ลิงค์สำหรับดูเอกสารที่เกี่ยวข้องกับการจ่ายเคลม,"""www.google.com""",,No,
+,No,No,22,claim_causes_of_death,Yes,String,20,,,สาเหตุการตาย,"""08""",ภาคผนวก ก - DeathType,No,"(1) กรณีเป็นการเคลมที่ไม่ใช่มรณกรรม ให้เลือก สาเหตุการตาย เป็น ไม่ใช่กรณีมรณกรรม (98)
+(2) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,No,23,claim_oic_case_id,No,String,10,,,รหัสเหตุการณ์ อุบัติภัยรายใหญ่ (ถ้ามี),"""08""",,No,
+,No,No,24,claim_oic_case_detail,No,String,500,,,คำนิยาม อุบัติภัยรายใหญ่ (ถ้ามี),"""ผู้เอาประกันเสียชีวิตด้วยโรคมะเร็งลำไส้""",,No,
+,No,No,25,claim_request_channel,No,String,500,,,ช่องทางการเคลม,"""สนธนาผ่านทางโทรศัพท์""",,No,
+,No,Yes,26,claim_insrd_ids,Yes,[String],500,,,เลขประจำตัวประชาชน/เลขทะเบียนนิติบุคคล ของผู้เอาประกันภัย (insrd_id),"[""1209700608854""]",,Yes,"สามารถส่งข้อมูลรหัสเข้ามาเป็น Array ได้ กรณีที่เป็นประกันกลุ่ม มีหลายคนที่เคลม หรือถ้าเคลมคนเดียว สามารถส่งข้อมูลเข้ามา 1 insrd_id ตัวอย่าง [1111111111111, 2222222222222]"
+,No,Yes,27,claim_icd_10_codes,Yes,[String],500,,,รหัส ICD10,"""Y513"",
+""A833""",ภาคผนวก ก - Icd10,No,"(1) สามารถส่งข้อมูลรหัสเข้ามาเป็น Array ได้ ตัวอย่าง [ICD10-A, ICD10-B]
+(2) ICD-10/claim_icd_10_codes การเคลมที่ไม่มีการระบุโรค เช่น อุบัติเหตุ ให้ส่งรหัส OTHER99 = ไม่ใช่กรณีป่วยเป็นโรค
+(3) อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data "
+,No,Yes,28,code,Yes,[String],500,,,รหัส ICD09,"""01.51"",
+""02.02""",ภาคผนวก ก - Icd9,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,Yes,Yes,29,claim_coverages,Yes,[ClaimCoverage],,100,,รายการเคลมตามความคุ้มครอง,,,No,"(1) หากมีข้อมูลการเคลมความคุ้มครองแล้ว บริษัทประกันจำเป็นต้องนำส่งข้อมูล
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล ClaimCoverage รายการเคลมตามความคุ้มครอง ลำดับที่ 1-8"
+,Yes,Yes,30,estimates,Yes,[Estimate],,100,,รายการประมาณการเคลม,,,No,ต้องนำส่งข้อมูลตามชุดข้อมูล Estimate รายการประมาณการเคลม ลำดับที่ 1-3
+,Yes,Yes,31,claim_payments,Yes(C),[ClaimPayment],,100,,รายการจ่ายเงินเคลม,โดยจะต้องระบุข้อมูล Field ตาม Format,,No,"(1) กรณี claim_status มีค่า = P ต้องส่งรายการจ่ายเงินเคลม (claim_payments)
+(2) ต้องนำส่งข้อมูลตามชุดข้อมูล ClaimPayment รายการจ่ายเงินเคลม ลำดับที่ 1-11"
+การเคลมตามความคุ้มครอง (Claim Coverage),,,,,,,,,,,,,,
+,No,No,1,claim_coverage_code,Yes,String,200,,,รหัสความคุ้มครอง,"""C20-005""",การ,No,
+,No,No,2,claim_coverage_detail,Yes,String,200,,,รายละเอียดความคุ้มครอง,"""J0005 การรักษาพยาบาล""",,No,กรณีระบุ claim_coverage_code ที่มีความหมายเป็น อื่น ๆ ต้องระบุรายละเอียดจริงที่ได้จ่ายเคลมผู้เอาประกัน
+,No,No,3,claim_sum_insured_per_coverage_per_year,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัยสูงสุดในแต่ละหมวดความคุ้มครอง ต่อปี (บาท),20000,,No,
+,No,No,4,claim_sum_insured_per_coverage_per_time,Yes,number (decimal),,,,จำนวนเงินเอาประกันภัยสูงสุดในแต่ละหมวดความคุ้มครอง ต่อครั้ง (บาท),1500,,No,
+,No,No,5,claim_coverage_amt,No,number (decimal),,,,จำนวนเงินที่เคลมตามรหัสความคุ้มครอง (บาท),1500,,No,
+,No,No,6,claim_deductible_amt,No,number (decimal),,,,จำนวนเงินที่จ่ายในความรับผิดส่วนแรก (บาท),500,,No,
+,No,No,7,claim_amount,Yes,number (decimal),,,,จำนวนเงินที่ขอเคลมทั้งหมด (บาท),2000,,No,
+,Yes,Yes,8,simb2s,No,[SIMB2],,100,,SIMB2,,,No,ต้องนำส่งข้อมูลตามชุดข้อมูล SIMB2 ลำดับที่ 1-2
+SIMB2,,,,,,,,,,,,,,
+,No,No,1,claim_pol_coverage_detail_simb2,Yes,String,20,,,รหัสตาม SIMB 2,"""9001001""",ภาคผนวก ก - SIMB2,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,2,claim_pol_coverage_detail_simb2_amt,No,"number 
+(decimal)",,,,จำนวนเงินตามรหัส SIMB 2 (บาท),100,,No,
+การประมาณการเคลม (Estimate),,,,,,,,,,,,,,
+,No,No,1,claim_estimate_seq,Yes,number (int),,,,ครั้งที่ประมาณการ,2,,No,
+,No,No,2,claim_estimate_date,Yes,DateTime,,,,วันที่ประมาณการ,"""2022-01-15T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,3,claim_estimate_amount,Yes,"number 
+(decimal)",,,,จำนวนเงินที่ประมาณการ (บาท),150000,,No,
+การจ่ายเคลม (Claim Payment),,,,,,,,,,,,,,
+,No,No,1,claim_payment_id,Yes,String,50,,,รหัสการจ่ายเคลม หรือเลขที่การจ่ายก็ได้ เพื่อ identify ข้อมูลการจ่าย เคลม,"""CLM001_PMT20231122""",,No,
+,No,No,2,claim_payment_type,Yes,String,20,,,วิธีการจ่ายเคลม,"""01""",ภาคผนวก ก - ClaimPmtType,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,3,claim_payment_term,Yes,number (int),,,,งวดทั้งหมด (claim_payment_type = 02),5,,No,งวดทั้งหมด (claim_payment_type = 02)
+,No,No,4,claim_payment_term_paid,Yes,number (int),,,,งวดที่จ่าย (claim_payment_type = 02),5,,No,งวดที่จ่าย (claim_payment_type = 02)
+,No,No,5,claim_payment_channel,Yes,String,20,,,ช่องทางการจ่ายเคลม,"""01""",ภาคผนวก ก - ClaimPmtChannel,No,อ้างอิงเอกสารภาคผนวก ก - ตาราง Master data 
+,No,No,6,claim_payment_date,Yes,DateTime,,,,วันที่ผู้เอาประกันภัยได้รับเงินจ่ายเคลม หรือวันที่ทำการจ่ายเคลม,"""2022-01-15T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,7,claim_payment_account_date,Yes,DateTime,,,,วันที่ลงบัญชีการจ่ายเคลม,"""2022-01-15T15:00:00+07:00""
+(""YYYY-MM-DDThh:mm:ssTZD""|ISO 8601)",,No,
+,No,No,8,claim_payment_invoice_amt,Yes,"number 
+(decimal)",,,,จำนวนเงินที่จ่ายจริง (ในใบวางบิล) (บาท),8888.55,,No,
+,No,No,9,claim_payment_amt,Yes,"number 
+(decimal)",,,,จำนวนเงินที่จ่ายเคลม (บาท),7777.77,,No,
+,No,No,10,claim_payment_other_invoice_amt,No,"number 
+(decimal)",,,,ค่าใช้จ่ายอื่นๆ ที่นอกเหนือจากใบวางบิล (บาท),5555.55,,No,
+,No,No,11,claim_payment_beneficiary_name,Yes,String,700,,,ชื่อผู้รับประโยชน์ (กรณีจ่ายให้ผู้รับประโยชน์),"""test""",,No,

@@ -1,0 +1,24 @@
+# Netlify Configuration for IBSL RAG Frontend
+[build]
+  publish = "frontend"
+
+# 1. Map /static/* to the root so /static/app.js loads properly on Netlify
+[[redirects]]
+  from = "/static/*"
+  to = "/:splat"
+  status = 200
+
+# 2. Proxy all /api/* calls to your Render Backend
+# เมื่อได้ URL จาก Render (เช่น https://ibsl-rag-service.onrender.com)
+# ให้เปลี่ยน https://YOUR_RENDER_BACKEND_URL.onrender.com ด้านล่างนี้เป็น URL จริงของคุณ
+[[redirects]]
+  from = "/api/*"
+  to = "https://YOUR_RENDER_BACKEND_URL.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# 3. SPA Fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

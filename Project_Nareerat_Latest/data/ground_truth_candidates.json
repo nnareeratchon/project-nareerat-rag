@@ -1,0 +1,82 @@
+{
+  "candidates": [
+    {
+      "query": "กรมธรรม์",
+      "description": "สร้างจากผลประเมินของผู้ใช้ (Human-in-the-Loop) - รอตรวจสอบ",
+      "expected_item_ids": [
+        "FIELD-endorsements",
+        "FIELD-investments",
+        "FIELD-loan_payments",
+        "FIELD-loans",
+        "FIELD-pol_id",
+        "FIELD-pol_info_url",
+        "FIELD-pol_refer_code_of_company",
+        "FIELD-pol_status",
+        "FIELD-pol_year",
+        "FIELD-renewal_pol_id"
+      ],
+      "source": "user_feedback",
+      "created_at": "2026-10-30 16:46:52"
+    },
+    {
+      "query": "ชำระ",
+      "description": "สร้างจากผลประเมินของผู้ใช้ (Human-in-the-Loop) - รอตรวจสอบ",
+      "expected_item_ids": [
+        "FIELD-cov_payment_year",
+        "FIELD-cov_plan_cov_payment_year",
+        "FIELD-cust_first_name",
+        "FIELD-cust_occupation",
+        "FIELD-cust_type",
+        "FIELD-customer",
+        "FIELD-pol_payment_period",
+        "FIELD-pol_payment_term"
+      ],
+      "source": "user_feedback",
+      "created_at": "2026-10-30 16:46:52"
+    },
+    {
+      "query": "วันที่กรมธรรม์",
+      "description": "สร้างจากผลประเมินของผู้ใช้ (Human-in-the-Loop) - รอตรวจสอบ",
+      "expected_item_ids": [
+        "FIELD-pol_account_date",
+        "FIELD-pol_approved_date",
+        "FIELD-pol_issue_date",
+        "FIELD-pol_status_date",
+        "FIELD-pol_transaction_date",
+        "FIELD-pol_year"
+      ],
+      "source": "user_feedback",
+      "created_at": "2026-10-30 16:46:52"
+    },
+    {
+      "query": "วันที่ประกันภัย",
+      "description": "สร้างจากผลประเมินของผู้ใช้ (Human-in-the-Loop) - รอตรวจสอบ",
+      "expected_item_ids": [
+        "FIELD-pol_agree_date",
+        "FIELD-pol_approved_date",
+        "FIELD-pol_transaction_date"
+      ],
+      "source": "user_feedback",
+      "created_at": "2026-10-30 16:46:52"
+    },
+    {
+      "query": "เลขที่",
+      "description": "สร้างจากผลประเมินของผู้ใช้ (Human-in-the-Loop) - รอตรวจสอบ",
+      "expected_item_ids": [
+        "FIELD-endorse_id",
+        "FIELD-endorse_sub_pol_id",
+        "FIELD-insrd_pol_sub_ids",
+        "FIELD-loan_id",
+        "FIELD-pol_id",
+        "FIELD-pol_license",
+        "FIELD-pol_re_insured_contact_number",
+        "FIELD-renewal_pol_id",
+        "FIELD-sub_pol_id"
+      ],
+      "source": "user_feedback",
+      "created_at": "2026-10-30 16:46:52"
+    }
+  ],
+  "conflicts_with_ground_truth": [],
+  "not_fully_evaluated": []
+}

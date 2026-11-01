@@ -1,0 +1,640 @@
+{
+  "pol": {
+    "en": "policy",
+    "th": [
+      "กรมธรรม์"
+    ]
+  },
+  "policy": {
+    "en": "policy",
+    "th": [
+      "กรมธรรม์"
+    ]
+  },
+  "policies": {
+    "en": "policies",
+    "th": [
+      "กรมธรรม์"
+    ]
+  },
+  "sub": {
+    "en": "sub",
+    "th": [
+      "ย่อย",
+      "สัญญาเพิ่มเติม"
+    ]
+  },
+  "cust": {
+    "en": "customer",
+    "th": [
+      "ผู้ชำระเบี้ย",
+      "ผู้ซื้อ",
+      "ลูกค้า"
+    ]
+  },
+  "customer": {
+    "en": "customer",
+    "th": [
+      "ผู้ชำระเบี้ย",
+      "ผู้ซื้อ",
+      "ลูกค้า"
+    ]
+  },
+  "insrd": {
+    "en": "insured",
+    "th": [
+      "ผู้เอาประกัน"
+    ]
+  },
+  "insured": {
+    "en": "insured",
+    "th": [
+      "ผู้เอาประกัน"
+    ]
+  },
+  "insureds": {
+    "en": "insureds",
+    "th": [
+      "ผู้เอาประกัน"
+    ]
+  },
+  "cov": {
+    "en": "coverage",
+    "th": [
+      "ความคุ้มครอง"
+    ]
+  },
+  "coverage": {
+    "en": "coverage",
+    "th": [
+      "ความคุ้มครอง"
+    ]
+  },
+  "coverages": {
+    "en": "coverages",
+    "th": [
+      "ความคุ้มครอง"
+    ]
+  },
+  "inv": {
+    "en": "investment",
+    "th": [
+      "การลงทุน"
+    ]
+  },
+  "investments": {
+    "en": "investments",
+    "th": [
+      "การลงทุน"
+    ]
+  },
+  "endorse": {
+    "en": "endorsement",
+    "th": [
+      "สลักหลัง"
+    ]
+  },
+  "endorsements": {
+    "en": "endorsements",
+    "th": [
+      "สลักหลัง"
+    ]
+  },
+  "loan": {
+    "en": "loan",
+    "th": [
+      "กู้",
+      "เงินกู้"
+    ]
+  },
+  "loans": {
+    "en": "loans",
+    "th": [
+      "กู้",
+      "เงินกู้"
+    ]
+  },
+  "beneficiary": {
+    "en": "beneficiary",
+    "th": [
+      "ผู้รับผลประโยชน์"
+    ]
+  },
+  "beneficiaries": {
+    "en": "beneficiaries",
+    "th": [
+      "ผู้รับผลประโยชน์"
+    ]
+  },
+  "benefit": {
+    "en": "benefit",
+    "th": [
+      "ผลประโยชน์"
+    ]
+  },
+  "renewal": {
+    "en": "renewal",
+    "th": [
+      "ต่ออายุ"
+    ]
+  },
+  "amt": {
+    "en": "amount",
+    "th": [
+      "จำนวนเงิน"
+    ]
+  },
+  "amount": {
+    "en": "amount",
+    "th": [
+      "จำนวนเงิน"
+    ]
+  },
+  "date": {
+    "en": "date",
+    "th": [
+      "วันที่"
+    ]
+  },
+  "start": {
+    "en": "start",
+    "th": [
+      "เริ่มต้น"
+    ]
+  },
+  "end": {
+    "en": "end",
+    "th": [
+      "สิ้นสุด"
+    ]
+  },
+  "id": {
+    "en": "id",
+    "th": [
+      "เลขที่",
+      "รหัส"
+    ]
+  },
+  "ids": {
+    "en": "ids",
+    "th": [
+      "เลขที่",
+      "รหัส"
+    ]
+  },
+  "seq": {
+    "en": "sequence",
+    "th": [
+      "ลำดับ"
+    ]
+  },
+  "seqs": {
+    "en": "sequences",
+    "th": [
+      "ลำดับ"
+    ]
+  },
+  "no": {
+    "en": "number",
+    "th": [
+      "ลำดับ"
+    ]
+  },
+  "type": {
+    "en": "type",
+    "th": [
+      "ประเภท"
+    ]
+  },
+  "status": {
+    "en": "status",
+    "th": [
+      "สถานะ"
+    ]
+  },
+  "code": {
+    "en": "code",
+    "th": [
+      "รหัส"
+    ]
+  },
+  "detail": {
+    "en": "detail",
+    "th": [
+      "รายละเอียด"
+    ]
+  },
+  "name": {
+    "en": "name",
+    "th": [
+      "ชื่อ"
+    ]
+  },
+  "first": {
+    "en": "first",
+    "th": [
+      "ชื่อ"
+    ]
+  },
+  "last": {
+    "en": "last",
+    "th": [
+      "นามสกุล"
+    ]
+  },
+  "birthday": {
+    "en": "birthday",
+    "th": [
+      "วันเกิด"
+    ]
+  },
+  "age": {
+    "en": "age",
+    "th": [
+      "อายุ"
+    ]
+  },
+  "gender": {
+    "en": "gender",
+    "th": [
+      "เพศ"
+    ]
+  },
+  "address": {
+    "en": "address",
+    "th": [
+      "ที่อยู่"
+    ]
+  },
+  "province": {
+    "en": "province",
+    "th": [
+      "จังหวัด"
+    ]
+  },
+  "district": {
+    "en": "district",
+    "th": [
+      "อำเภอ"
+    ]
+  },
+  "zip": {
+    "en": "zip",
+    "th": [
+      "รหัสไปรษณีย์"
+    ]
+  },
+  "country": {
+    "en": "country",
+    "th": [
+      "ประเทศ"
+    ]
+  },
+  "phone": {
+    "en": "phone",
+    "th": [
+      "โทรศัพท์"
+    ]
+  },
+  "mobile": {
+    "en": "mobile",
+    "th": [
+      "มือถือ"
+    ]
+  },
+  "email": {
+    "en": "email",
+    "th": [
+      "อีเมล"
+    ]
+  },
+  "occupation": {
+    "en": "occupation",
+    "th": [
+      "อาชีพ"
+    ]
+  },
+  "income": {
+    "en": "income",
+    "th": [
+      "รายได้"
+    ]
+  },
+  "nationality": {
+    "en": "nationality",
+    "th": [
+      "สัญชาติ"
+    ]
+  },
+  "religion": {
+    "en": "religion",
+    "th": [
+      "ศาสนา"
+    ]
+  },
+  "race": {
+    "en": "race",
+    "th": [
+      "เชื้อชาติ"
+    ]
+  },
+  "payment": {
+    "en": "payment",
+    "th": [
+      "ชำระ"
+    ]
+  },
+  "payments": {
+    "en": "payments",
+    "th": [
+      "ชำระ"
+    ]
+  },
+  "pmt": {
+    "en": "payment",
+    "th": [
+      "ชำระเบี้ย",
+      "การชำระ",
+      "ชำระ",
+      "จ่ายเบี้ย"
+    ]
+  },
+  "prd": {
+    "en": "period",
+    "th": [
+      "งวด",
+      "งวดการชำระ"
+    ]
+  },
+  "rid": {
+    "en": "rider",
+    "th": [
+      "สัญญาเพิ่มเติม",
+      "ไรเดอร์"
+    ]
+  },
+  "edm": {
+    "en": "endorsement",
+    "th": [
+      "สลักหลัง"
+    ]
+  },
+  "claim": {
+    "en": "claim",
+    "th": [
+      "เคลม"
+    ]
+  },
+  "hospital": {
+    "en": "hospital",
+    "th": [
+      "โรงพยาบาล",
+      "สถานพยาบาล"
+    ]
+  },
+  "estimate": {
+    "en": "estimate",
+    "th": [
+      "ประมาณการ",
+      "สำรอง"
+    ]
+  },
+  "reject": {
+    "en": "reject",
+    "th": [
+      "ปฏิเสธ"
+    ]
+  },
+  "reason": {
+    "en": "reason",
+    "th": [
+      "เหตุผล",
+      "สาเหตุ"
+    ]
+  },
+  "term": {
+    "en": "term",
+    "th": [
+      "งวด",
+      "ระยะเวลา"
+    ]
+  },
+  "paid": {
+    "en": "paid",
+    "th": [
+      "จ่าย",
+      "ชำระแล้ว"
+    ]
+  },
+  "premium": {
+    "en": "premium",
+    "th": [
+      "เบี้ยประกัน"
+    ]
+  },
+  "interest": {
+    "en": "interest",
+    "th": [
+      "ดอกเบี้ย"
+    ]
+  },
+  "rate": {
+    "en": "rate",
+    "th": [
+      "อัตรา"
+    ]
+  },
+  "principal": {
+    "en": "principal",
+    "th": [
+      "เงินต้น"
+    ]
+  },
+  "sum": {
+    "en": "sum insured",
+    "th": [
+      "ทุนประกัน",
+      "จำนวนเงินเอาประกัน"
+    ]
+  },
+  "plan": {
+    "en": "plan",
+    "th": [
+      "แผน"
+    ]
+  },
+  "plans": {
+    "en": "plans",
+    "th": [
+      "แผน"
+    ]
+  },
+  "fund": {
+    "en": "fund",
+    "th": [
+      "กองทุน"
+    ]
+  },
+  "nav": {
+    "en": "NAV",
+    "th": [
+      "มูลค่าหน่วยลงทุน"
+    ]
+  },
+  "unit": {
+    "en": "unit",
+    "th": [
+      "หน่วย"
+    ]
+  },
+  "license": {
+    "en": "license",
+    "th": [
+      "ใบอนุญาต"
+    ]
+  },
+  "distribution": {
+    "en": "distribution channel",
+    "th": [
+      "ช่องทางการขาย"
+    ]
+  },
+  "transaction": {
+    "en": "transaction",
+    "th": [
+      "รายการ"
+    ]
+  },
+  "issue": {
+    "en": "issue",
+    "th": [
+      "ออก"
+    ]
+  },
+  "issued": {
+    "en": "issued",
+    "th": [
+      "ออก"
+    ]
+  },
+  "approved": {
+    "en": "approved",
+    "th": [
+      "อนุมัติ"
+    ]
+  },
+  "sale": {
+    "en": "sale",
+    "th": [
+      "ขาย"
+    ]
+  },
+  "year": {
+    "en": "year",
+    "th": [
+      "ปี"
+    ]
+  },
+  "deductible": {
+    "en": "deductible",
+    "th": [
+      "ความรับผิดส่วนแรก"
+    ]
+  },
+  "maturity": {
+    "en": "maturity",
+    "th": [
+      "ครบกำหนด"
+    ]
+  },
+  "survival": {
+    "en": "survival",
+    "th": [
+      "เงินคืน"
+    ]
+  },
+  "expropriation": {
+    "en": "surrender",
+    "th": [
+      "เวนคืน"
+    ]
+  },
+  "refund": {
+    "en": "refund",
+    "th": [
+      "คืนเงิน"
+    ]
+  },
+  "url": {
+    "en": "URL",
+    "th": [
+      "ลิงก์"
+    ]
+  },
+  "urls": {
+    "en": "URLs",
+    "th": [
+      "ลิงก์"
+    ]
+  },
+  "document": {
+    "en": "document",
+    "th": [
+      "เอกสาร"
+    ]
+  },
+  "medical": {
+    "en": "medical",
+    "th": [
+      "ตรวจสุขภาพ"
+    ]
+  },
+  "risk": {
+    "en": "risk",
+    "th": [
+      "ภัย"
+    ]
+  },
+  "relation": {
+    "en": "relation",
+    "th": [
+      "ความสัมพันธ์"
+    ]
+  },
+  "ratio": {
+    "en": "ratio",
+    "th": [
+      "สัดส่วน"
+    ]
+  },
+  "permanent": {
+    "en": "permanent",
+    "th": [
+      "ตามบัตรประชาชน"
+    ]
+  },
+  "current": {
+    "en": "current",
+    "th": [
+      "ปัจจุบัน"
+    ]
+  },
+  "work": {
+    "en": "work",
+    "th": [
+      "ที่ทำงาน"
+    ]
+  },
+  "gli": {
+    "en": "group life insurance",
+    "th": [
+      "ประกันกลุ่ม"
+    ]
+  },
+  "oic": {
+    "en": "OIC",
+    "th": [
+      "คปภ"
+    ]
+  }
+}

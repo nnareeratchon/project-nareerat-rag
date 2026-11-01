@@ -1,0 +1,68 @@
+[
+  {
+    "query": "pol_start_date",
+    "description": "ค้นหาชื่อฟิลด์ภาษาอังกฤษ: วันที่เริ่มต้นความคุ้มครอง",
+    "expected_item_ids": [
+      "FIELD-pol_start_date"
+    ]
+  },
+  {
+    "query": "วันที่เริ่มต้นความคุ้มครอง",
+    "description": "ค้นหาความหมายภาษาไทย: วันที่เริ่มต้นความคุ้มครองของกรมธรรม์",
+    "expected_item_ids": [
+      "FIELD-pol_start_date"
+    ]
+  },
+  {
+    "query": "กรมธรรม์ที่เป็น Expiry ส่งสถานะอะไร",
+    "description": "คำถาม FAQ เรื่องการส่งรหัสสถานะ Expiry ของกรมธรรม์",
+    "expected_item_ids": [
+      "FAQ-POL-01",
+      "FIELD-pol_status"
+    ]
+  },
+  {
+    "query": "pol_license คืออะไร",
+    "description": "ค้นหาฟิลด์ pol_license และแนวทางการส่งเลขที่ใบอนุญาต",
+    "expected_item_ids": [
+      "FIELD-pol_license",
+      "FAQ-POL-02",
+      "FAQ-POL-03"
+    ]
+  },
+  {
+    "query": "insrd_birthday",
+    "description": "ค้นหาฟิลด์วันเกิดของผู้เอาประกันภัยและแนวทางส่ง",
+    "expected_item_ids": [
+      "FIELD-insrd_birthday",
+      "FAQ-POL-15"
+    ]
+  },
+  {
+    "query": "pol_status",
+    "description": "ค้นหาฟิลด์สถานะของกรมธรรม์",
+    "expected_item_ids": [
+      "FIELD-pol_status",
+      "FAQ-POL-01",
+      "FAQ-POL-07"
+    ]
+  },
+  {
+    "query": "ผู้เอาประกัน",
+    "description": "ค้นหาข้อมูลผู้เอาประกันภัยในกรมธรรม์",
+    "expected_item_ids": [
+      "FIELD-insureds",
+      "FIELD-insrd_seq",
+      "FIELD-insrd_id"
+    ]
+  },
+  {
+    "query": "การกู้ยืมของกรมธรรม์",
+    "description": "ค้นหาข้อมูลรายการเงินกู้ตามกรมธรรม์",
+    "expected_item_ids": [
+      "FIELD-loans",
+      "FIELD-loan_id",
+      "FIELD-loan_amount"
+    ]
+  }
+]

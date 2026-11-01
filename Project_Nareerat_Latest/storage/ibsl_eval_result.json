@@ -1,0 +1,189 @@
+{
+  "signature": "ibsl_v3|scope=policy|fields.json:1793529733:406167|tables.json:1793529733:24691|ibsl_items.json:1793529733:674316|ibsl_chunks.jsonl:1793529733:433775|ibsl_pages.json:1793529733:237122|ground_truth_ibsl.json:1793529733:5836|local||k=3|rel=0.60|fields=209",
+  "result": {
+    "available": true,
+    "test_count": 7,
+    "skipped_out_of_scope": [
+      "GT-08",
+      "GT-09",
+      "GT-10",
+      "GT-11",
+      "GT-12"
+    ],
+    "verified_count": 7,
+    "macro_precision_at_3": 0.8095,
+    "macro_recall_at_3": 0.6429,
+    "macro_f1_at_3": 0.7007,
+    "evaluated_at": "2026-11-01 23:09:06",
+    "embedding_method": "TF-IDF Vector (คำภาษาไทย + character n-gram)",
+    "ground_truth_file": "data_rag/ground_truth_ibsl.json",
+    "test_cases": [
+      {
+        "test_id": "GT-01",
+        "query": "pol_type ส่งค่า NULL ได้หรือไม่",
+        "category": "Policy",
+        "expected_ids": [
+          "FIELD-pol_type"
+        ],
+        "relevant_doc_ids": [
+          "FIELD-pol_type"
+        ],
+        "retrieved_ids": [
+          "FIELD-pol_type"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "verified": true,
+        "note": "TP=1, FP=0, FN=0"
+      },
+      {
+        "test_id": "GT-02",
+        "query": "pol_start_date ต้องส่งวันที่รูปแบบใด",
+        "category": "Policy",
+        "expected_ids": [
+          "FIELD-pol_start_date"
+        ],
+        "relevant_doc_ids": [
+          "FIELD-pol_start_date",
+          "FIELD-pol_end_date"
+        ],
+        "retrieved_ids": [
+          "FIELD-pol_start_date"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6667,
+        "verified": true,
+        "note": "TP=1, FP=0, FN=1"
+      },
+      {
+        "test_id": "GT-03",
+        "query": "pol_status 9999 เกิด Error อะไร",
+        "category": "Policy",
+        "expected_ids": [
+          "FIELD-pol_status"
+        ],
+        "relevant_doc_ids": [
+          "FIELD-pol_status",
+          "FIELD-pol_transaction_status"
+        ],
+        "retrieved_ids": [
+          "FIELD-pol_status"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6667,
+        "verified": true,
+        "note": "TP=1, FP=0, FN=1"
+      },
+      {
+        "test_id": "GT-04",
+        "query": "pol_distribution ส่งรหัสช่องทางการขายอย่างไร",
+        "category": "Policy",
+        "expected_ids": [
+          "FIELD-pol_distribution"
+        ],
+        "relevant_doc_ids": [
+          "FIELD-pol_distribution"
+        ],
+        "retrieved_ids": [
+          "FIELD-pol_distribution"
+        ],
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "verified": true,
+        "note": "TP=1, FP=0, FN=0"
+      },
+      {
+        "test_id": "GT-05",
+        "query": "ผู้เอาประกัน",
+        "category": "Insured",
+        "expected_ids": [
+          "FIELD-insureds"
+        ],
+        "relevant_doc_ids": [
+          "FIELD-insureds",
+          "FIELD-insrd_seq",
+          "FIELD-insrd_id",
+          "FIELD-insrd_cov_plan_seq"
+        ],
+        "retrieved_ids": [
+          "FIELD-insureds",
+          "FIELD-insrd_birthday",
+          "FIELD-insrd_id"
+        ],
+        "tp": 2,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.6667,
+        "recall": 0.5,
+        "f1": 0.5714,
+        "verified": true,
+        "note": "TP=2, FP=1, FN=2"
+      },
+      {
+        "test_id": "GT-06",
+        "query": "sub_pol_start_date ส่งปี พ.ศ. ได้หรือไม่",
+        "category": "Sub Policy",
+        "expected_ids": [
+          "FIELD-sub_pol_start_date"
+        ],
+        "relevant_doc_ids": [
+          "FIELD-sub_pol_start_date",
+          "FIELD-sub_pol_end_date"
+        ],
+        "retrieved_ids": [
+          "FIELD-sub_pol_start_date",
+          "FIELD-pol_start_date"
+        ],
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "verified": true,
+        "note": "TP=1, FP=1, FN=1"
+      },
+      {
+        "test_id": "GT-07",
+        "query": "cov_plan_cov_amt ส่งค่า 0 ได้หรือไม่",
+        "category": "Coverage Plan Coverage",
+        "expected_ids": [
+          "FIELD-cov_plan_cov_amt"
+        ],
+        "relevant_doc_ids": [
+          "FIELD-cov_plan_cov_amt",
+          "FIELD-cov_plan_sum_insured"
+        ],
+        "retrieved_ids": [
+          "FIELD-cov_plan_cov_amt",
+          "FIELD-cov_amt"
+        ],
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "verified": true,
+        "note": "TP=1, FP=1, FN=1"
+      }
+    ],
+    "explanation": "Precision@3, Recall@3 และ F1@3 คำนวณจากผลการค้นคืนเปรียบเทียบกับชุดทดสอบมาตรฐาน Ground Truth ตามหลักการ Information Retrieval โดย Precision คำนวณจากความถูกต้องของรายการที่ค้นคืน (TP / (TP+FP)) และ Recall คำนวณจากความครบถ้วนของคำตอบที่ครอบคลุม (TP / (TP+FN))"
+  }
+}

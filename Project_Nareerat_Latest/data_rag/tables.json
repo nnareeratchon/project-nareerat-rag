@@ -1,0 +1,786 @@
+[
+  {
+    "key": "Policy",
+    "name_th": "กรมธรรม์ประกันชีวิต",
+    "name_en": "Policy",
+    "raw_name": "กรมธรรม์ประกันชีวิต (Policy)",
+    "entity": "กรมธรรม์",
+    "aliases": [
+      "กรมธรรม์",
+      "กรมธรรม์ประกันชีวิต",
+      "policy",
+      "สัญญาประกันภัย"
+    ],
+    "container_dtype": null,
+    "source_row": 2,
+    "field_names": [
+      "pol_refer_code_of_company",
+      "pol_transaction_status",
+      "pol_company_id",
+      "pol_id",
+      "pol_type",
+      "pol_type_gli_name",
+      "pol_type_gli_plan",
+      "pol_product_type",
+      "pol_product_type_other_detail",
+      "pol_type_2",
+      "pol_sub_type",
+      "pol_name",
+      "pol_name_oic",
+      "pol_start_date",
+      "pol_end_date",
+      "pol_claim_document",
+      "pol_payment_term",
+      "pol_payment_amount",
+      "pol_payment_period",
+      "pol_info_url",
+      "pol_claim_url",
+      "pol_document_urls",
+      "pol_year",
+      "pol_status",
+      "pol_status_note",
+      "pol_status_date",
+      "pol_expropriation_value",
+      "pol_immediate_refund",
+      "pol_sale_date",
+      "pol_transaction_date",
+      "pol_approved_date",
+      "pol_issue_date",
+      "pol_account_date",
+      "pol_agree_date",
+      "pol_distribution",
+      "pol_distribution_other_detail",
+      "pol_license",
+      "pol_re_insured_contact_number",
+      "pol_life_detail",
+      "renewal",
+      "renewal_pol_id",
+      "customer",
+      "insureds",
+      "sub_policies",
+      "beneficiaries",
+      "endorsements",
+      "loans",
+      "loan_payments",
+      "investments"
+    ],
+    "key_fields": [
+      "pol_company_id",
+      "pol_id",
+      "renewal_pol_id"
+    ]
+  },
+  {
+    "key": "Customer",
+    "name_th": "ผู้ซื้อประกันชีวิต",
+    "name_en": "Customer",
+    "raw_name": "ผู้ซื้อประกันชีวิต (Customer)",
+    "entity": "ผู้ชำระเบี้ยประกันภัย",
+    "aliases": [
+      "ผู้ซื้อประกัน",
+      "ผู้ชำระเบี้ย",
+      "ผู้จ่ายเบี้ย",
+      "ลูกค้า",
+      "customer",
+      "payer"
+    ],
+    "container_dtype": "Customer",
+    "source_row": 52,
+    "parent_table_key": "Policy",
+    "container_field": "customer",
+    "field_names": [
+      "cust_type",
+      "cust_type_other_detail",
+      "cust_id_type",
+      "cust_id",
+      "cust_company_name",
+      "cust_first_name",
+      "cust_last_name",
+      "cust_age",
+      "cust_birthday",
+      "cust_gender",
+      "cust_address",
+      "cust_sub_district",
+      "cust_district",
+      "cust_province",
+      "cust_zip_code",
+      "cust_country_code",
+      "cust_phone_number",
+      "cust_mobile_number",
+      "cust_email",
+      "cust_issued_age",
+      "cust_race",
+      "cust_nationality",
+      "cust_religion",
+      "cust_occupation_level",
+      "cust_occupation_level_other_detail",
+      "cust_occupation",
+      "cust_job",
+      "cust_position",
+      "cust_business_type",
+      "cust_income_per_year",
+      "cust_us_person",
+      "cust_us_person_born",
+      "cust_us_person_green_card",
+      "cust_us_person_vat",
+      "cust_us_person_183",
+      "cust_address_permanent",
+      "cust_sub_district_permanent",
+      "cust_district_permanent",
+      "cust_province_permanent",
+      "cust_address_work",
+      "cust_sub_district_work",
+      "cust_district_work",
+      "cust_province_work",
+      "cust_address_current",
+      "cust_sub_district_current",
+      "cust_district_current",
+      "cust_province_current"
+    ],
+    "key_fields": [
+      "cust_id"
+    ]
+  },
+  {
+    "key": "Insured",
+    "name_th": "ผู้เอาประกัน",
+    "name_en": "Insured",
+    "raw_name": "ผู้เอาประกัน (Insured)",
+    "entity": "ผู้เอาประกันภัย",
+    "aliases": [
+      "ผู้เอาประกัน",
+      "ผู้เอาประกันภัย",
+      "ผู้ทำประกัน",
+      "สมาชิกประกันกลุ่ม",
+      "insured"
+    ],
+    "container_dtype": "[insureds]",
+    "source_row": 100,
+    "parent_table_key": "Policy",
+    "container_field": "insureds",
+    "field_names": [
+      "insrd_cov_plan_seq",
+      "insrd_seq",
+      "insrd_type",
+      "insrd_id_type",
+      "insrd_id",
+      "insrd_first_name",
+      "insrd_last_name",
+      "insrd_age",
+      "insrd_birthday",
+      "insrd_gender",
+      "insrd_address",
+      "insrd_sub_district",
+      "insrd_district",
+      "insrd_province",
+      "insrd_zip_code",
+      "insrd_country_code",
+      "insrd_phone_number",
+      "insrd_mobile_number",
+      "insrd_email",
+      "insrd_issued_age",
+      "insrd_race",
+      "insrd_nationality",
+      "insrd_religion",
+      "insrd_occupation_level",
+      "insrd_occupation_level_other_detail",
+      "insrd_occupation",
+      "insrd_job",
+      "insrd_position",
+      "insrd_business_type",
+      "insrd_income_per_year",
+      "insrd_pol_sub_ids",
+      "insrd_beneficiaries",
+      "standard_risk",
+      "medical"
+    ],
+    "key_fields": [
+      "insrd_cov_plan_seq",
+      "insrd_seq",
+      "insrd_id"
+    ]
+  },
+  {
+    "key": "InsuredBeneficiary",
+    "name_th": "ผู้รับผลประโยชน์ภายใต้ผู้เอาประกัน",
+    "name_en": "InsuredBeneficiary",
+    "raw_name": "ผู้รับผลประโยชน์ภายใต้ผู้เอาประกัน (InsuredBeneficiary)",
+    "entity": "ผู้รับผลประโยชน์ภายใต้ผู้เอาประกันภัย",
+    "aliases": [
+      "ผู้รับผลประโยชน์ของผู้เอาประกัน",
+      "insured beneficiary"
+    ],
+    "container_dtype": "[InsuredBeneficiary]",
+    "source_row": 135,
+    "parent_table_key": "Insured",
+    "container_field": "insrd_beneficiaries",
+    "field_names": [
+      "insrd_beneficiary_seq_no",
+      "insrd_beneficiary_name",
+      "insrd_beneficiary_relation",
+      "insrd_beneficiary_relation_other_detail",
+      "insrd_benefit_ratio"
+    ],
+    "key_fields": [
+      "insrd_beneficiary_seq_no"
+    ]
+  },
+  {
+    "key": "SubPolicy",
+    "name_th": "ความคุ้มครอง สัญญาหลัก สัญญาเพิ่มเติม หรือ บันทึกสลักหลัง",
+    "name_en": "Sub Policy",
+    "raw_name": "ความคุ้มครอง สัญญาหลัก สัญญาเพิ่มเติม หรือ บันทึกสลักหลัง (Sub Policy)",
+    "entity": "สัญญาหลัก/สัญญาเพิ่มเติม (Sub Policy)",
+    "aliases": [
+      "สัญญาเพิ่มเติม",
+      "สัญญาหลัก",
+      "rider",
+      "sub policy",
+      "อนุสัญญา"
+    ],
+    "container_dtype": "[SubPolicy]",
+    "source_row": 141,
+    "parent_table_key": "Policy",
+    "container_field": "sub_policies",
+    "field_names": [
+      "sub_pol_id",
+      "sub_pol_type",
+      "sub_pol_ppt",
+      "sub_pol_start_date",
+      "sub_pol_end_date",
+      "sub_pol_sum_insured_per_year_exclude",
+      "sub_pol_sum_insured_per_year_include",
+      "policy_cov_plan_seqs",
+      "coverages"
+    ],
+    "key_fields": [
+      "sub_pol_id"
+    ]
+  },
+  {
+    "key": "PolicyCovPlanSeq",
+    "name_th": "ลำดับแผน (กรณี ประกันกลุ่มจะมีมากกว่า 1 แผน)",
+    "name_en": "Policy Coverage Plan Sequence",
+    "raw_name": "ลำดับแผน (กรณี ประกันกลุ่มจะมีมากกว่า 1 แผน) (Policy Coverage Plan Sequence)",
+    "entity": "ลำดับแผนความคุ้มครอง",
+    "aliases": [
+      "แผนประกัน",
+      "ลำดับแผน",
+      "แผนประกันกลุ่ม",
+      "plan"
+    ],
+    "container_dtype": "[PolicyCovPlanSeq]",
+    "source_row": 151,
+    "parent_table_key": "SubPolicy",
+    "container_field": "policy_cov_plan_seqs",
+    "field_names": [
+      "cov_plan_seq",
+      "cov_plan_name",
+      "cov_plan_sum_insured",
+      "cov_plan_maturity_benefit",
+      "cov_plan_survival_benefit_min",
+      "cov_plan_survival_benefit_max",
+      "coverages_under_plans"
+    ],
+    "key_fields": [
+      "cov_plan_seq"
+    ]
+  },
+  {
+    "key": "CoveragePlanCoverage",
+    "name_th": "ความคุ้มครองภายใต้ลำดับแผน",
+    "name_en": "Coverage Plan Coverage",
+    "raw_name": "ความคุ้มครองภายใต้ลำดับแผน (Coverage Plan Coverage)",
+    "entity": "ความคุ้มครองภายใต้ลำดับแผน",
+    "aliases": [
+      "ความคุ้มครองตามแผน",
+      "plan coverage"
+    ],
+    "container_dtype": "[PlanCoverage]",
+    "source_row": 159,
+    "parent_table_key": "PolicyCovPlanSeq",
+    "container_field": "coverages_under_plans",
+    "field_names": [
+      "cov_plan_cov_code",
+      "cov_plan_cov_detail",
+      "cov_plan_cov_amt",
+      "cov_plan_cov_sum_insured_per_coverage_per_year",
+      "cov_plan_cov_sum_insured_per_coverage_per_time",
+      "cov_plan_cov_co_payment",
+      "cov_plan_cov_deductible_amount",
+      "cov_plan_cov_deductible_detail",
+      "cov_plan_cov_number_of_day",
+      "cov_plan_cov_cover_year",
+      "cov_plan_cov_payment_year",
+      "cov_plan_cov_claim_status"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "Coverage",
+    "name_th": "ความคุ้มครอง",
+    "name_en": "Coverage",
+    "raw_name": "ความคุ้มครอง (Coverage)",
+    "entity": "ความคุ้มครอง",
+    "aliases": [
+      "ความคุ้มครอง",
+      "ทุนประกัน",
+      "coverage"
+    ],
+    "container_dtype": "[SubPolicyCoverage]",
+    "source_row": 172,
+    "parent_table_key": "SubPolicy",
+    "container_field": "coverages",
+    "field_names": [
+      "cov_code",
+      "cov_detail",
+      "cov_amt",
+      "cov_sum_insured_per_coverage_per_year",
+      "cov_sum_insured_per_coverage_per_time",
+      "cov_co_payment",
+      "cov_deductible_amount",
+      "cov_deductible_detail",
+      "cov_number_of_day",
+      "cov_cover_year",
+      "cov_payment_year",
+      "cov_claim_status"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "Beneficiary",
+    "name_th": "ผู้รับผลประโยชน์",
+    "name_en": "Beneficiary",
+    "raw_name": "ผู้รับผลประโยชน์ (Beneficiary)",
+    "entity": "ผู้รับผลประโยชน์",
+    "aliases": [
+      "ผู้รับผลประโยชน์",
+      "ผู้รับประโยชน์",
+      "beneficiary"
+    ],
+    "container_dtype": "[Beneficiary]",
+    "source_row": 185,
+    "parent_table_key": "Policy",
+    "container_field": "beneficiaries",
+    "field_names": [
+      "beneficiary_seq_no",
+      "beneficiary_name",
+      "beneficiary_relation",
+      "beneficiary_relation_other_detail",
+      "benefit_ratio"
+    ],
+    "key_fields": [
+      "beneficiary_seq_no"
+    ]
+  },
+  {
+    "key": "Endorsement",
+    "name_th": "สลักหลังของกรมธรรม์",
+    "name_en": "Endorsement",
+    "raw_name": "สลักหลังของกรมธรรม์ (Endorsement)",
+    "entity": "สลักหลัง",
+    "aliases": [
+      "สลักหลัง",
+      "บันทึกสลักหลัง",
+      "endorsement"
+    ],
+    "container_dtype": "[Endorsement]",
+    "source_row": 191,
+    "parent_table_key": "Policy",
+    "container_field": "endorsements",
+    "field_names": [
+      "endorse_id",
+      "endorse_type_1",
+      "endorse_type_2",
+      "endorse_sub_pol_id",
+      "endorse_detail",
+      "endorse_status"
+    ],
+    "key_fields": [
+      "endorse_id",
+      "endorse_sub_pol_id"
+    ]
+  },
+  {
+    "key": "Loan",
+    "name_th": "การกู้ยืมของกรมธรรม์",
+    "name_en": "Loan",
+    "raw_name": "การกู้ยืมของกรมธรรม์ (Loan)",
+    "entity": "การกู้ยืม",
+    "aliases": [
+      "กู้",
+      "เงินกู้",
+      "กู้ยืม",
+      "กู้เงินกรมธรรม์",
+      "loan"
+    ],
+    "container_dtype": "[Loan]",
+    "source_row": 198,
+    "parent_table_key": "Policy",
+    "container_field": "loans",
+    "field_names": [
+      "loan_id",
+      "loan_type",
+      "loan_date",
+      "loan_interest_rate",
+      "loan_amount",
+      "loan_interest_amount",
+      "loan_status"
+    ],
+    "key_fields": [
+      "loan_id"
+    ]
+  },
+  {
+    "key": "LoanPayment",
+    "name_th": "การจ่ายกู้ยืมของกรมธรรม์",
+    "name_en": "Loan Payment",
+    "raw_name": "การจ่ายกู้ยืมของกรมธรรม์ (Loan Payment)",
+    "entity": "การชำระคืนเงินกู้",
+    "aliases": [
+      "ชำระคืนเงินกู้",
+      "คืนเงินกู้",
+      "จ่ายคืนเงินกู้",
+      "loan payment"
+    ],
+    "container_dtype": "[LoanPayment]",
+    "source_row": 206,
+    "parent_table_key": "Policy",
+    "container_field": "loan_payments",
+    "field_names": [
+      "loan_payment_id",
+      "loan_payment_date",
+      "loan_payment_amount",
+      "loan_payment_interest",
+      "loan_payment_principal"
+    ],
+    "key_fields": [
+      "loan_payment_id"
+    ]
+  },
+  {
+    "key": "Investment",
+    "name_th": "การลงทุนของกรมธรรม์",
+    "name_en": "Investment",
+    "raw_name": "การลงทุนของกรมธรรม์ (Investment)",
+    "entity": "การลงทุน",
+    "aliases": [
+      "การลงทุน",
+      "ยูนิตลิงค์",
+      "unit linked",
+      "investment"
+    ],
+    "container_dtype": "[Investment]",
+    "source_row": 212,
+    "parent_table_key": "Policy",
+    "container_field": "investments",
+    "field_names": [
+      "inv_transaction_date",
+      "inv_transaction_type",
+      "policy_fund_codes"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "PolicyFundCode",
+    "name_th": "กองทุน",
+    "name_en": "Policy Fund Code",
+    "raw_name": "กองทุน (Policy Fund Code)",
+    "entity": "กองทุน",
+    "aliases": [
+      "กองทุน",
+      "หน่วยลงทุน",
+      "NAV",
+      "fund"
+    ],
+    "container_dtype": "[PolicyFunCode]",
+    "source_row": 216,
+    "parent_table_key": "Investment",
+    "container_field": "policy_fund_codes",
+    "field_names": [
+      "inv_fund_code",
+      "inv_fund_unit",
+      "inv_fund_nav",
+      "inv_fund_thai_name",
+      "inv_fund_eng_name",
+      "inv_fund_type",
+      "inv_fund_amc",
+      "inv_fund_data_status"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "Payment",
+    "name_th": "การชำระเบี้ย",
+    "name_en": "Payment",
+    "raw_name": "การชำระเบี้ย (Payment)",
+    "entity": "การชำระเบี้ย",
+    "aliases": [
+      "การชำระเบี้ย",
+      "ชำระเบี้ย",
+      "จ่ายเบี้ย",
+      "payment",
+      "เบี้ยประกัน"
+    ],
+    "container_dtype": "[Payment]",
+    "source_row": 225,
+    "field_names": [
+      "pmt_refer_code_of_company",
+      "pmt_transaction_status",
+      "pmt_company_id",
+      "pmt_pol_id",
+      "pmt_pol_refer_code_of_company",
+      "pmt_id",
+      "pmt_type",
+      "pmt_direct_premium",
+      "pmt_premium_payment_period_year",
+      "pmt_premium_payment_year",
+      "pmt_payment_period",
+      "payment_period_seqs"
+    ],
+    "key_fields": [
+      "pmt_company_id",
+      "pmt_pol_id",
+      "pmt_id"
+    ]
+  },
+  {
+    "key": "PaymentPeriodSeq",
+    "name_th": "งวดการชำระเบี้ย",
+    "name_en": "Payment Period Seq",
+    "raw_name": "งวดการชำระเบี้ย (Payment Period Seq)",
+    "entity": "งวดการชำระเบี้ย",
+    "aliases": [
+      "งวดชำระเบี้ย",
+      "งวดเบี้ย",
+      "payment period"
+    ],
+    "container_dtype": "[PaymentPeriodSeq]",
+    "source_row": 238,
+    "field_names": [
+      "pmt_prd_premium_seq",
+      "pmt_prd_premium_outstanding_payment",
+      "pmt_prd_premium_amount",
+      "pmt_prd_premium_amount_tax",
+      "pmt_prd_premium_amount_life",
+      "pmt_prd_premium_amt_saving",
+      "pmt_prd_premium_amt_investment",
+      "pmt_prd_premium_amount_other",
+      "pmt_prd_premium_amount_com",
+      "pmt_prd_premium_amt_interest",
+      "pmt_prd_premium_date",
+      "pmt_prd_premium_due_date",
+      "pmt_prd_premium_temp_receipt_date",
+      "pmt_prd_premium_receipt_date",
+      "pmt_prd_premium_temp_receipt_number",
+      "pmt_prd_premium_receipt_number",
+      "pmt_prd_premium_channel",
+      "pmt_prd_premium_channel_detail",
+      "payment_premium_type_riders",
+      "payment_premium_type_endorsements"
+    ],
+    "key_fields": [
+      "pmt_prd_premium_seq"
+    ]
+  },
+  {
+    "key": "PaymentPremiumTypeRider",
+    "name_th": "การจ่ายเบี้ยสำหรับสัญญาเพิ่มเติม",
+    "name_en": "Payment Premium Type Rider",
+    "raw_name": "การจ่ายเบี้ยสำหรับสัญญาเพิ่มเติม (Payment Premium Type Rider )",
+    "entity": "การจ่ายเบี้ยสำหรับสัญญาเพิ่มเติม",
+    "aliases": [
+      "จ่ายเบี้ยสัญญาเพิ่มเติม",
+      "เบี้ยไรเดอร์",
+      "payment rider"
+    ],
+    "container_dtype": "[PaymentRider]",
+    "source_row": 259,
+    "parent_table_key": "PaymentPeriodSeq",
+    "container_field": "payment_premium_type_riders",
+    "field_names": [
+      "pmt_premium_rid_number",
+      "pmt_premium_rid_amount"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "PaymentPremiumTypeEndorsement",
+    "name_th": "การจ่ายเบี้ยสำหรับบันทึกสลักหลัง",
+    "name_en": "Payment Premium Type Endorsement",
+    "raw_name": "การจ่ายเบี้ยสำหรับบันทึกสลักหลัง (Payment Premium Type Endorsement )",
+    "entity": "การจ่ายเบี้ยสำหรับบันทึกสลักหลัง",
+    "aliases": [
+      "จ่ายเบี้ยสลักหลัง",
+      "เบี้ยสลักหลัง",
+      "payment endorsement"
+    ],
+    "container_dtype": "[PaymentEndorsement]",
+    "source_row": 262,
+    "parent_table_key": "PaymentPeriodSeq",
+    "container_field": "payment_premium_type_endorsements",
+    "field_names": [
+      "pmt_premium_edm_number",
+      "pmt_premium_edm_amount"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "Claim",
+    "name_th": "การเคลม",
+    "name_en": "Claim",
+    "raw_name": "การเคลม (Claim)",
+    "entity": "การเคลม",
+    "aliases": [
+      "การเคลม",
+      "เคลม",
+      "สินไหม",
+      "เรียกร้องสินไหม",
+      "claim"
+    ],
+    "container_dtype": "[Claim]",
+    "source_row": 265,
+    "field_names": [
+      "claim_refer_code_of_company",
+      "claim_transaction_status",
+      "claim_company_id",
+      "claim_pol_id",
+      "claim_pol_refer_code_of_company",
+      "claim_id",
+      "claim_no",
+      "claim_type",
+      "claim_pol_type",
+      "claim_incurred_date",
+      "claim_report_date",
+      "claim_notify_date",
+      "claim_discharge_date",
+      "claim_hospital_id",
+      "claim_hospital_name",
+      "claim_doctor_name",
+      "claim_completion_date",
+      "claim_close_date",
+      "claim_status",
+      "claim_reject_reason",
+      "claim_document_link",
+      "claim_causes_of_death",
+      "claim_oic_case_id",
+      "claim_oic_case_detail",
+      "claim_request_channel",
+      "claim_insrd_ids",
+      "claim_icd_10_codes",
+      "code",
+      "claim_coverages",
+      "estimates",
+      "claim_payments"
+    ],
+    "key_fields": [
+      "claim_company_id",
+      "claim_pol_id",
+      "claim_id",
+      "claim_hospital_id",
+      "claim_oic_case_id"
+    ]
+  },
+  {
+    "key": "ClaimCoverage",
+    "name_th": "การเคลมตามความคุ้มครอง",
+    "name_en": "Claim Coverage",
+    "raw_name": "การเคลมตามความคุ้มครอง (Claim Coverage)",
+    "entity": "การเคลมตามความคุ้มครอง",
+    "aliases": [
+      "เคลมตามความคุ้มครอง",
+      "สินไหมความคุ้มครอง",
+      "claim coverage"
+    ],
+    "container_dtype": "[ClaimCoverage]",
+    "source_row": 297,
+    "parent_table_key": "Claim",
+    "container_field": "claim_coverages",
+    "field_names": [
+      "claim_coverage_code",
+      "claim_coverage_detail",
+      "claim_sum_insured_per_coverage_per_year",
+      "claim_sum_insured_per_coverage_per_time",
+      "claim_coverage_amt",
+      "claim_deductible_amt",
+      "claim_amount",
+      "simb2s"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "SIMB2",
+    "name_th": "SIMB2",
+    "name_en": "SIMB2",
+    "raw_name": "SIMB2",
+    "entity": "SIMB2",
+    "aliases": [
+      "SIMB2",
+      "simb"
+    ],
+    "container_dtype": null,
+    "source_row": 306,
+    "field_names": [
+      "claim_pol_coverage_detail_simb2",
+      "claim_pol_coverage_detail_simb2_amt"
+    ],
+    "key_fields": []
+  },
+  {
+    "key": "Estimate",
+    "name_th": "การประมาณการเคลม",
+    "name_en": "Estimate",
+    "raw_name": "การประมาณการเคลม (Estimate)",
+    "entity": "การประมาณการเคลม",
+    "aliases": [
+      "ประมาณการเคลม",
+      "สำรองสินไหม",
+      "estimate"
+    ],
+    "container_dtype": "[Estimate]",
+    "source_row": 309,
+    "parent_table_key": "Claim",
+    "container_field": "estimates",
+    "field_names": [
+      "claim_estimate_seq",
+      "claim_estimate_date",
+      "claim_estimate_amount"
+    ],
+    "key_fields": [
+      "claim_estimate_seq"
+    ]
+  },
+  {
+    "key": "ClaimPayment",
+    "name_th": "การจ่ายเคลม",
+    "name_en": "Claim Payment",
+    "raw_name": "การจ่ายเคลม (Claim Payment)",
+    "entity": "การจ่ายเคลม",
+    "aliases": [
+      "การจ่ายเคลม",
+      "จ่ายสินไหม",
+      "จ่ายเคลม",
+      "claim payment"
+    ],
+    "container_dtype": "[ClaimPayment]",
+    "source_row": 313,
+    "parent_table_key": "Claim",
+    "container_field": "claim_payments",
+    "field_names": [
+      "claim_payment_id",
+      "claim_payment_type",
+      "claim_payment_term",
+      "claim_payment_term_paid",
+      "claim_payment_channel",
+      "claim_payment_date",
+      "claim_payment_account_date",
+      "claim_payment_invoice_amt",
+      "claim_payment_amt",
+      "claim_payment_other_invoice_amt",
+      "claim_payment_beneficiary_name"
+    ],
+    "key_fields": [
+      "claim_payment_id"
+    ]
+  }
+]

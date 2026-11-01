@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ระบบสืบค้นข้อกำหนดและแนวทางแก้ไขปัญหาการนำส่งข้อมูล IBSL</title>
+    <!-- Google Fonts: Inter & Sarabun -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Sarabun", "Inter", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#f0f7ff",
+                100: "#e0effe",
+                200: "#bae0fd",
+                500: "#2563eb",
+                600: "#1d4ed8",
+                700: "#1e40af",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Sarabun", "Inter", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #eef2f9 0%,
+          #f7f9fd 45%,
+          #fceef6 75%,
+          #fef3ec 100%
+        );
+        color: #1e293b;
+        min-height: 100vh;
+      }
+      .custom-scroll::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scroll::-webkit-scrollbar-thumb {
+        background-color: #cbd5e1;
+        border-radius: 9999px;
+      }
+      .custom-scroll::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+    </style>
+  </head>
+  <body class="p-3 md:p-6 lg:p-8 flex items-center justify-center min-h-screen">
+    <!-- Main Floating White Card (Exact Layout as Reference Image) -->
+    <div
+      class="w-full max-w-[1520px] bg-white rounded-[32px] shadow-[0_12px_45px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col md:flex-row overflow-hidden min-h-[90vh]"
+    >
+      <!-- ============================================================== -->
+      <!-- LEFT COMPACT SIDEBAR NAVIGATION (Matching Reference Image) -->
+      <!-- ============================================================== -->
+      <aside
+        class="w-full md:w-[76px] border-b md:border-b-0 md:border-r border-slate-100 flex md:flex-col justify-between items-center py-4 md:py-6 px-4 md:px-0 flex-shrink-0 bg-white"
+      >
+        <!-- Top Section -->
+        <div class="flex md:flex-col items-center gap-6">
+          <!-- Arrow / Brand Toggle -->
+          <button
+            onclick="switchTab('home')"
+            class="text-slate-400 hover:text-slate-700 transition p-2"
+            title="กลับสู่หน้าหลัก"
+          >
+            <i data-lucide="arrow-right-left" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Vertical Icon Navigation -->
+          <nav class="flex md:flex-col items-center gap-2">
+            <!-- 1. Home / Landing Page -->
+            <button
+              onclick="switchTab('home')"
+              id="nav-btn-home"
+              title="หน้าหลัก (Home)"
+              class="w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-200 text-blue-600 bg-blue-50 shadow-sm"
+            >
+              <i data-lucide="home" class="w-4 h-4"></i>
+            </button>
+
+            <!-- 2. Search Page -->
+            <button
+              onclick="switchTab('search')"
+              id="nav-btn-search"
+              title="ค้นหาคำตอบ (Search)"
+              class="w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-200 text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+            >
+              <i data-lucide="search" class="w-4 h-4"></i>
+            </button>
+
+            <!-- 3. Metrics Page -->
+            <button
+              onclick="switchTab('metrics')"
+              id="nav-btn-metrics"
+              title="ผลการประเมินประสิทธิภาพ (Metrics)"
+              class="w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-200 text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+            >
+              <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+            </button>
+
+            <!-- 4. Field Catalog Page -->
+            <button
+              onclick="switchTab('fields')"
+              id="nav-btn-fields"
+              title="รายการฟิลด์ข้อมูล (Fields)"
+              class="w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-200 text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+            >
+              <i data-lucide="table-2" class="w-4 h-4"></i>
+            </button>
+          </nav>
+        </div>
+
+      </aside>
+
+      <!-- ============================================================== -->
+      <!-- MAIN CONTENT AREA -->
+      <!-- ============================================================== -->
+      <main
+        class="flex-1 p-6 md:p-8 lg:p-10 flex flex-col justify-between overflow-y-auto custom-scroll"
+      >
+        <!-- Top Bar: Breadcrumbs & Header Actions -->
+        <div class="w-full">
+          <div
+            class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-100"
+          >
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+              <button
+                onclick="switchTab('home')"
+                class="hover:text-blue-600 font-medium"
+              >
+                Home page
+              </button>
+              <span>/</span>
+              <span>...</span>
+              <span>/</span>
+              <span>Dashboard</span>
+              <span>/</span>
+              <span id="breadcrumb-current" class="text-blue-600 font-semibold"
+                >หน้าหลัก</span
+              >
+            </div>
+
+            <!-- Top Action Buttons (Matching reference UI: Export, Print, Main Action) -->
+            <div class="flex items-center gap-3">
+              <button
+                onclick="switchTab('metrics')"
+                class="px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-50 transition flex items-center gap-1.5"
+              >
+                <i
+                  data-lucide="activity"
+                  class="w-3.5 h-3.5 text-slate-400"
+                ></i>
+                <span>ดูผลประเมิน</span>
+              </button>
+
+              <!-- Back to Home Button (Visible in search/metrics pages) -->
+              <button
+                id="btn-back-home"
+                onclick="switchTab('home')"
+                class="hidden px-4 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition flex items-center gap-1.5 shadow-sm"
+              >
+                <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+                <span>กลับสู่หน้าหลัก</span>
+              </button>
+
+              <!-- Primary Action Button: Create / Enter Search -->
+              <button
+                id="btn-enter-search-top"
+                onclick="switchTab('search')"
+                class="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-sm shadow-blue-500/20"
+              >
+                <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                <span>เข้าสู่ระบบค้นหาคำตอบ</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ============================================================== -->
+          <!-- VIEW 1: หน้าหลักก่อนเข้าสู่ระบบ (LANDING / HOME PAGE) -->
+          <!-- ============================================================== -->
+          <div id="view-home" class="py-8 md:py-12 max-w-5xl mx-auto">
+            <!-- Hero Section -->
+            <div class="text-center max-w-3xl mx-auto mb-10">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-semibold mb-4"
+              >
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                <span>ระบบสืบค้นรายการฟิลด์ข้อมูลกรมธรรม์</span>
+              </div>
+              <h1
+                class="text-2xl md:text-4xl font-bold text-slate-900 tracking-tight leading-tight mb-3"
+              >
+                ระบบตอบคำถามข้อมูลกรมธรรม์ประกันภัย
+              </h1>
+              <!-- Cover Subtitle strictly as requested -->
+              <p class="text-slate-500 text-sm md:text-base font-normal">
+                สืบค้นรายการฟิลด์ข้อมูล และแสดงรายการฟิลด์ที่เกี่ยวข้องกัน
+                ด้วยเทคนิค RAG
+              </p>
+
+              <div
+                class="mt-8 flex flex-wrap items-center justify-center gap-4"
+              >
+                <button
+                  onclick="switchTab('search')"
+                  class="px-7 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition flex items-center gap-2 shadow-md shadow-blue-500/25"
+                >
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  <span>เข้าสู่ระบบค้นหาคำตอบ</span>
+                </button>
+                <button
+                  onclick="switchTab('metrics')"
+                  class="px-6 py-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-sm font-semibold transition flex items-center gap-2"
+                >
+                  <i
+                    data-lucide="bar-chart-3"
+                    class="w-4 h-4 text-slate-500"
+                  ></i>
+                  <span>ดูผลการประเมินประสิทธิภาพระบบ</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Feature Cards (Matching UI Card Aesthetic) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+              <div
+                class="p-6 rounded-3xl bg-white border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-blue-200 transition"
+              >
+                <div
+                  class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4"
+                >
+                  <i data-lucide="database" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-base mb-1.5">
+                  ฟิลด์ข้อมูล Policy
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  ครอบคลุมรายการฟิลด์ข้อมูลกรมธรรม์ใน 14 โครงสร้างตารางย่อย
+                </p>
+              </div>
+
+              <div
+                class="p-6 rounded-3xl bg-white border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-blue-200 transition"
+              >
+                <div
+                  class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4"
+                >
+                  <i data-lucide="git-merge" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-base mb-1.5">
+                  ฟิลด์ที่เกี่ยวข้องกัน (Related Fields)
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  ระบุชื่อข้อมูลหรือรายละเอียดข้อมูลเพื่อค้นหารายการฟิลด์ทั้งหมดที่มีความสัมพันธ์กันในโครงสร้างกรมธรรม์
+                </p>
+              </div>
+
+              <div
+                class="p-6 rounded-3xl bg-white border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-blue-200 transition"
+              >
+                <div
+                  class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4"
+                >
+                  <i data-lucide="cpu" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-base mb-1.5">
+                  RAG พร้อม AI อธิบายรายฟิลด์
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  ค้นคืนรายการฟิลด์ทั้งหมดที่ตรงเงื่อนไข
+                  พร้อมสังเคราะห์คำอธิบายจาก AI เจาะจงในแต่ละฟิลด์
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================== -->
+          <!-- VIEW 2: หน้าค้นหาคำตอบ (Q&A SEARCH SYSTEM) -->
+          <!-- ============================================================== -->
+          <div id="view-search" class="hidden py-6">
+            <!-- Page Title & Header (Matching reference UI Orders style) -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">
+                  ค้นหาข้อมูลกรมธรรม์ประกันภัย
+                </h2>
+                <p class="text-xs md:text-sm text-slate-500 mt-1">
+                  สืบค้นและแสดงรายการฟิลด์ข้อมูลกรมธรรม์ ที่เกี่ยวข้องกัน
+                  ด้วยเทคนิค RAG
+                </p>
+              </div>
+
+              <!-- Filter Pills (Matching Reference Image) -->
+              <div class="flex flex-wrap items-center gap-2">
+                <button
+                  onclick="switchTab('home')"
+                  class="px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition flex items-center gap-1.5 shadow-sm"
+                >
+                  <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                  <span>กลับหน้าหลัก</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Search Input Box (Matching reference search bar style) -->
+            <div
+              class="bg-white rounded-2xl border border-slate-200 p-2 md:p-3 shadow-sm mb-3"
+            >
+              <div class="flex items-center gap-3">
+                <div class="pl-2 text-slate-400">
+                  <i data-lucide="search" class="w-5 h-5"></i>
+                </div>
+                <input
+                  type="text"
+                  id="search-input"
+                  placeholder="กรอกคำค้นหา"
+                  class="flex-1 bg-transparent text-sm md:text-base text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                  onkeydown="
+                    if (event.key === 'Enter') {
+                      handleSearch();
+                    }
+                  "
+                />
+                <button
+                  id="btn-clear-search"
+                  onclick="clearSearchInput()"
+                  class="hidden p-1.5 text-slate-400 hover:text-slate-600 transition"
+                  title="ล้างข้อความ"
+                >
+                  <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+                <button
+                  onclick="handleSearch()"
+                  class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs md:text-sm transition flex items-center gap-1.5 shadow-sm"
+                >
+                  <span>ค้นหาคำตอบ</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Retrieval performance (Ground Truth benchmark) -->
+            <div class="grid grid-cols-3 gap-2 md:gap-3 mb-6">
+              <div
+                class="px-3 py-2.5 rounded-2xl bg-white border border-slate-200 shadow-sm"
+              >
+                <p
+                  class="text-[11px] font-bold uppercase tracking-wider text-blue-600"
+                >
+                  Precision@3
+                </p>
+                <p
+                  id="search-metric-precision"
+                  class="text-lg md:text-xl font-black text-slate-900 font-mono"
+                >
+                  --%
+                </p>
+              </div>
+              <div
+                class="px-3 py-2.5 rounded-2xl bg-white border border-slate-200 shadow-sm"
+              >
+                <p
+                  class="text-[11px] font-bold uppercase tracking-wider text-emerald-600"
+                >
+                  Recall@3
+                </p>
+                <p
+                  id="search-metric-recall"
+                  class="text-lg md:text-xl font-black text-slate-900 font-mono"
+                >
+                  --%
+                </p>
+              </div>
+              <div
+                class="px-3 py-2.5 rounded-2xl bg-white border border-slate-200 shadow-sm"
+              >
+                <p
+                  class="text-[11px] font-bold uppercase tracking-wider text-indigo-600"
+                >
+                  F1@3
+                </p>
+                <p
+                  id="search-metric-f1"
+                  class="text-lg md:text-xl font-black text-slate-900 font-mono"
+                >
+                  --%
+                </p>
+              </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="search-loading" class="hidden py-12 text-center">
+              <div
+                class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 mb-2 animate-spin"
+              >
+                <i data-lucide="loader-2" class="w-5 h-5"></i>
+              </div>
+              <p class="text-sm font-medium text-slate-700">
+                กำลังสืบค้นรายการข้อมูลที่ตรงตามเงื่อนไข
+                และเรียบเรียงคำอธิบาย...
+              </p>
+            </div>
+
+            <!-- Empty State -->
+            <div
+              id="search-empty"
+              class="hidden py-12 text-center rounded-2xl border border-dashed border-slate-200"
+            >
+              <i
+                data-lucide="search-x"
+                class="w-8 h-8 mx-auto text-slate-400 mb-2"
+              ></i>
+              <p class="text-sm font-medium text-slate-700">
+                ไม่พบข้อมูลที่ตรงกับคำค้นหาในส่วนของ Policy
+              </p>
+              <p class="text-xs text-slate-500 mt-1">
+                คำค้นหาจะต้องเป็น "ชื่อข้อมูล" (เช่น pol_id, pol_type) หรือ
+                "รายละเอียดข้อมูล" (เช่น เลขที่กรมธรรม์, วันที่มีผลคุ้มครอง)
+              </p>
+            </div>
+
+            <!-- Results Container -->
+            <div id="search-results-area" class="hidden space-y-6">
+              <!-- Found Items Count -->
+              <div
+                id="search-query-banner"
+                class="flex flex-wrap items-center gap-2"
+              >
+                <span
+                  id="fields-count-badge"
+                  class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200"
+                >
+                  พบ 0 รายการข้อมูลจากเอกสาร IBSL
+                </span>
+                <span
+                  id="feedback-applied-note"
+                  class="hidden px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200"
+                  title="ยกเลิกได้โดยลบผลประเมินของคำค้นนี้ในหน้าผลการประเมิน"
+                ></span>
+              </div>
+
+              <!-- SECTION 1 & 2: ผลการค้นหารายการฟิลด์ข้อมูลและข้อกำหนด IBSL ที่เกี่ยวข้อง -->
+              <div class="space-y-5">
+                <div
+                  class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-600 px-5 py-5 md:px-7 md:py-6 text-white shadow-[0_10px_30px_rgba(37,99,235,0.25)]"
+                >
+                  <!-- Decorative glow -->
+                  <div
+                    class="pointer-events-none absolute -top-12 -right-10 w-44 h-44 rounded-full bg-white/10 blur-2xl"
+                  ></div>
+                  <div
+                    class="relative flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  >
+                    <div class="flex items-center gap-4 min-w-0">
+                      <div
+                        class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-2xl bg-white/15 ring-1 ring-white/30 flex items-center justify-center"
+                      >
+                        <i
+                          data-lucide="layers"
+                          class="w-6 h-6 md:w-7 md:h-7"
+                        ></i>
+                      </div>
+                      <div class="min-w-0">
+                        <h3
+                          class="text-lg md:text-2xl font-bold tracking-tight leading-snug"
+                        >
+                          ส่วนที่ 1: ผลการค้นหารายการฟิลด์ข้อมูลและข้อกำหนด IBSL ที่เกี่ยวข้อง
+                        </h3>
+                        <p class="text-xs md:text-sm text-blue-100 mt-1">
+                          รายละเอียดโครงสร้างฟิลด์ข้อมูล พร้อมตรวจสอบกรณีปัญหาและแนวทางแก้ไขจากเอกสาร IBSL
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      id="fields-section-badge"
+                      class="self-start sm:self-center shrink-0 px-4 py-1.5 rounded-full text-sm font-bold bg-white text-blue-700 shadow-sm"
+                    >
+                      0 รายการ
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Retrieved IBSL Items List (Section 1 + Section 2 Details inside each card) -->
+                <div id="retrieved-fields-list" class="space-y-5">
+                  <!-- Dynamically populated with IBSL item cards -->
+                </div>
+              </div>
+
+              <!-- SECTION 3: คำแนะนำเพิ่มเติมจาก AI Agent -->
+              <div id="external-ai-area" class="pt-2">
+                <div
+                  class="p-6 md:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_25px_rgba(0,0,0,0.03)]"
+                >
+                  <div
+                    class="flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100"
+                  >
+                    <div class="flex items-center gap-2.5">
+                      <div
+                        class="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-sm"
+                      >
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                      </div>
+                      <div>
+                        <h3
+                          class="font-bold text-slate-900 text-base md:text-lg"
+                        >
+                          ส่วนที่ 3: คำแนะนำเพิ่มเติมจาก AI Agent
+                        </h3>
+                        <p class="text-[11px] text-slate-500 font-normal">
+                          คำแนะนำเสริมจากแหล่งข้อมูลภายนอกที่น่าเชื่อถือ (แยกจากข้อกำหนดเอกสาร IBSL อย่างชัดเจน)
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      id="external-ai-badge"
+                      class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200"
+                    >
+                      แหล่งข้อมูลภายนอก
+                    </span>
+                  </div>
+
+                  <div
+                    id="external-ai-content"
+                    class="text-xs md:text-sm text-slate-700 leading-relaxed font-normal whitespace-pre-line"
+                  >
+                    กำลังค้นหาคำแนะนำเพิ่มเติม...
+                  </div>
+
+                  <div id="external-sources-container" class="mt-3 pt-3 border-t border-slate-100 hidden">
+                    <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                      แหล่งอ้างอิงภายนอกที่สืบค้นได้:
+                    </p>
+                    <ul id="external-sources-list" class="space-y-1 text-xs text-blue-600">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION 4: สรุปคำตอบโดย LLM -->
+              <div class="pt-2">
+                <div
+                  class="p-6 md:p-7 rounded-3xl bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/50 border border-blue-200/90 shadow-[0_4px_25px_rgba(37,99,235,0.06)]"
+                >
+                  <div
+                    class="flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-blue-100/80"
+                  >
+                    <div class="flex items-center gap-2.5">
+                      <div
+                        class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm"
+                      >
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                      </div>
+                      <div>
+                        <h3
+                          class="font-bold text-slate-900 text-base md:text-lg"
+                        >
+                          ส่วนที่ 4: สรุปคำตอบโดย LLM
+                        </h3>
+                        <p class="text-[11px] text-slate-500 font-normal">
+                          สังเคราะห์จากเอกสาร IBSL ตามลำดับ: สรุปคำตอบ, รายละเอียดและเงื่อนไข, ตัวอย่างข้อมูล, แนวทางแก้ไข, และแหล่งอ้างอิง
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      id="answer-source-badge"
+                      class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-sm"
+                    >
+                      สังเคราะห์โดย AI (อ้างอิงเอกสาร IBSL)
+                    </span>
+                  </div>
+
+                  <!-- Synthesized Answer Text -->
+                  <div
+                    class="text-sm md:text-base text-slate-800 leading-relaxed font-normal whitespace-pre-line"
+                  >
+                    <p id="synthesized-answer-text">
+                      คำตอบจะแสดงที่นี่เมื่อค้นหา
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Human-in-the-Loop User Evaluation Action -->
+              <div
+                class="p-5 rounded-2xl bg-slate-50 border border-slate-200/90 mt-8"
+              >
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 mb-3"
+                >
+                  <div>
+                    <h4
+                      class="font-bold text-slate-900 text-sm flex items-center gap-2"
+                    >
+                      <i
+                        data-lucide="user-check"
+                        class="w-4 h-4 text-blue-600"
+                      ></i>
+                      <span
+                        >ประเมินผลการทดสอบจากผู้ใช้งาน (Human-in-the-Loop)</span
+                      >
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-0.5">
+                      โปรดเลือกความเกี่ยวข้องในการ์ดแต่ละอันด้านบน
+                      จากนั้นกดบันทึกเพื่อนำค่าสถิติไปใช้ในรายงาน
+                    </p>
+                  </div>
+                  <div
+                    id="eval-status-hint"
+                    class="text-xs font-medium text-slate-500 bg-white px-3 py-1.5 rounded-xl border border-slate-200"
+                  >
+                    กรุณาเลือกประเมินในการ์ดด้านบน
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                  <input
+                    type="text"
+                    id="eval-comment-input"
+                    placeholder="ข้อคิดเห็นหรือข้อสังเกตเพิ่มเติมของผู้ทดสอบ (ถ้ามี)"
+                    class="flex-1 min-w-[260px] bg-white text-slate-800 border border-slate-200 rounded-xl px-4 py-2 text-xs placeholder:text-slate-400 focus:outline-none focus:border-blue-500"
+                  />
+                  <button
+                    onclick="submitOverallEvaluation()"
+                    id="btn-submit-eval"
+                    class="px-5 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white transition flex items-center gap-1.5 shadow-sm"
+                  >
+                    <i data-lucide="save" class="w-3.5 h-3.5"></i>
+                    <span>บันทึกผลการประเมินของผู้ใช้</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================== -->
+          <!-- VIEW 3: หน้าผลการประเมินประสิทธิภาพระบบ (EVALUATION METRICS) -->
+          <!-- ============================================================== -->
+          <div id="view-metrics" class="hidden py-6">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">
+                  ผลการประเมินประสิทธิภาพระบบ
+                </h2>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <button
+                  onclick="switchTab('home')"
+                  class="px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition flex items-center gap-1.5 shadow-sm"
+                >
+                  <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                  <span>กลับหน้าหลัก</span>
+                </button>
+                <button
+                  onclick="loadMetricsData()"
+                  class="px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition flex items-center gap-1.5 shadow-sm"
+                >
+                  <i
+                    data-lucide="refresh-cw"
+                    class="w-3.5 h-3.5 text-blue-600"
+                  ></i>
+                  <span>คำนวณสถิติใหม่</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- EXACTLY 3 KPI Cards in One Row (Desktop) / Stacked (Mobile) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+              <!-- Card 1: Precision@3 -->
+              <div
+                class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-blue-300 transition"
+              >
+                <div class="flex items-center justify-between mb-3">
+                  <span
+                    class="text-xs font-bold uppercase tracking-wider text-blue-600"
+                    >1. Precision@3</span
+                  >
+                  <span
+                    class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200"
+                    >k=3</span
+                  >
+                </div>
+                <h3 class="text-sm font-semibold text-slate-500">
+                  ความแม่นยำในการค้นคืน
+                </h3>
+                <div class="my-3">
+                  <span
+                    id="metric-precision-val"
+                    class="text-4xl md:text-5xl font-black text-slate-900 font-mono"
+                  >
+                    --%
+                  </span>
+                </div>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  สัดส่วนรายการที่อยู่ในเฉลยจากรายการที่ระบบค้นคืน
+                  เทียบกับชุดทดสอบ Ground Truth โดยเฉลี่ยแบบ Macro
+                </p>
+              </div>
+
+              <!-- Card 2: Recall@3 -->
+              <div
+                class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-emerald-300 transition"
+              >
+                <div class="flex items-center justify-between mb-3">
+                  <span
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-600"
+                    >2. Recall@3</span
+                  >
+                  <span
+                    class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200"
+                    >k=3</span
+                  >
+                </div>
+                <h3 class="text-sm font-semibold text-slate-500">
+                  ความครอบคลุมคำตอบ
+                </h3>
+                <div class="my-3">
+                  <span
+                    id="metric-recall-val"
+                    class="text-4xl md:text-5xl font-black text-slate-900 font-mono"
+                  >
+                    --%
+                  </span>
+                </div>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  สัดส่วนรายการในเฉลยที่ระบบค้นคืนได้ เทียบกับชุดทดสอบ Ground
+                  Truth โดยเฉลี่ยแบบ Macro
+                </p>
+              </div>
+
+              <!-- Card 3: F1@3 -->
+              <div
+                class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-indigo-300 transition"
+              >
+                <div class="flex items-center justify-between mb-3">
+                  <span
+                    class="text-xs font-bold uppercase tracking-wider text-indigo-600"
+                    >3. F1@3</span
+                  >
+                  <span
+                    class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200"
+                    >k=3</span
+                  >
+                </div>
+                <h3 class="text-sm font-semibold text-slate-500">
+                  ค่าเฉลี่ยฮาร์โมนิก (F1-Score)
+                </h3>
+                <div class="my-3">
+                  <span
+                    id="metric-f1-val"
+                    class="text-4xl md:text-5xl font-black text-slate-900 font-mono"
+                  >
+                    --%
+                  </span>
+                </div>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  ค่าเฉลี่ยฮาร์โมนิกของ Precision@3 และ Recall@3 โดยคำนวณ F1
+                  ต่อคำค้นของชุดทดสอบ Ground Truth ก่อน แล้วนำมาเฉลี่ยแบบ Macro
+                </p>
+              </div>
+            </div>
+
+            <!-- User Evaluation Logs Table (Designed like Reference Orders Table) -->
+            <div
+              class="rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-sm mb-8"
+            >
+              <div
+                class="px-6 py-4 border-b border-slate-100 bg-slate-50/60 flex items-center justify-between"
+              >
+                <div>
+                  <h4
+                    class="font-bold text-slate-900 text-sm flex items-center gap-2"
+                  >
+                    <i data-lucide="users" class="w-4 h-4 text-blue-600"></i>
+                    <span
+                      >ประวัติผลการทดสอบและประเมินโดยผู้ใช้งาน
+                      (สำหรับคัดลอกใส่รายงาน)</span
+                    >
+                  </h4>
+                  <p class="text-xs text-slate-400 mt-0.5">
+                    แสดงข้อมูลคำค้นหาที่ผ่านการประเมินแล้ว พร้อมค่า User
+                    Precision@3 รายคำค้น (นับเฉพาะคำค้นที่ประเมินครบทั้ง 3
+                    รายการแรก)
+                  </p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span
+                    id="user-precision-avg"
+                    class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700"
+                    >User P@3: --</span
+                  >
+                  <span
+                    id="user-eval-count"
+                    class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600"
+                    >0 รายการ</span
+                  >
+                  <button
+                    onclick="confirmClearAllEvaluations()"
+                    class="px-3 py-1 rounded-full border border-rose-200 text-xs font-semibold text-rose-600 hover:bg-rose-50 hover:border-rose-300 transition flex items-center gap-1 shadow-sm"
+                    title="ล้างประวัติการประเมินทั้งหมดเพื่อเริ่มเก็บข้อมูลใหม่"
+                  >
+                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                    <span>ล้างทั้งหมด</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left">
+                  <thead
+                    class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-100"
+                  >
+                    <tr>
+                      <th class="px-5 py-3.5">วันที่ / เวลา</th>
+                      <th class="px-5 py-3.5">คำค้นหาที่ทดสอบ (Query)</th>
+                      <th class="px-5 py-3.5 text-center">ผลลัพธ์ที่แสดง</th>
+                      <th class="px-5 py-3.5 text-center">
+                        เกี่ยวข้อง (ทั้งหมด)
+                      </th>
+                      <th class="px-5 py-3.5 text-center">
+                        Precision (ทั้งหมด)
+                      </th>
+                      <th class="px-5 py-3.5 text-center">
+                        เกี่ยวข้อง (3 อันดับแรก)
+                      </th>
+                      <th class="px-5 py-3.5 text-center">P@3</th>
+                      <th class="px-5 py-3.5">ข้อคิดเห็นผู้ทดสอบ</th>
+                      <th class="px-4 py-3.5 text-center">จัดการ</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    id="user-eval-table-body"
+                    class="divide-y divide-slate-100 text-slate-700"
+                  >
+                    <tr>
+                      <td
+                        colspan="9"
+                        class="px-5 py-8 text-center text-slate-400"
+                      >
+                        ยังไม่มีข้อมูลการประเมินจากผู้ใช้งาน
+                        สามารถทดลองค้นหาและประเมินผลในหน้าค้นหาเพื่อเริ่มสะสมสถิติ
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Supporting Baseline: Ground Truth Benchmark Reference Table -->
+            <div class="rounded-3xl bg-slate-50 border border-slate-200/80 p-6">
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                <h4
+                  class="font-bold text-slate-800 text-sm flex items-center gap-2"
+                >
+                  <i data-lucide="file-text" class="w-4 h-4 text-slate-500"></i>
+                  <span
+                    >ข้อมูลอ้างอิงชุดทดสอบมาตรฐาน (Ground Truth Benchmark
+                    Reference)</span
+                  >
+                </h4>
+                <div class="flex items-center gap-2">
+                  <span id="gt-evaluated-at" class="text-xs text-slate-400 font-mono"></span>
+                  <span id="gt-case-count" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">ชุดทดสอบมาตรฐาน</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                ตารางชุดทดสอบอ้างอิงที่มีการตรวจสอบเฉลยข้อมูลจากเอกสาร IBSL แล้ว
+                คำนวณค่า Precision@3, Recall@3 และ F1@3 จากผลการค้นคืน 3 อันดับแรกจริง
+                (F1 คำนวณรายคำถามก่อนเฉลี่ยแบบ Macro) สามารถใช้เป็นเกณฑ์เปรียบเทียบประกอบในรายงานโครงงานได้
+              </p>
+              <div
+                class="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-sm"
+              >
+                <table class="w-full text-xs text-left">
+                  <thead
+                    class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-100"
+                  >
+                    <tr>
+                      <th class="px-4 py-3">#</th>
+                      <th class="px-4 py-3">Test ID</th>
+                      <th class="px-4 py-3">คำค้นหา</th>
+                      <th class="px-4 py-3">หมวดหมู่</th>
+                      <th class="px-4 py-3">Expected IDs</th>
+                      <th class="px-4 py-3">Retrieved IDs</th>
+                      <th class="px-4 py-3 text-center">P@3</th>
+                      <th class="px-4 py-3 text-center">R@3</th>
+                      <th class="px-4 py-3 text-center">F1@3</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    id="gt-table-body"
+                    class="divide-y divide-slate-100 text-slate-600"
+                  >
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================== -->
+          <!-- VIEW 4: รายการฟิลด์ข้อมูล (FIELD CATALOG = the knowledge base itself) -->
+          <!-- ============================================================== -->
+          <div id="view-fields" class="hidden py-6">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">
+                  รายการฟิลด์ข้อมูล
+                </h2>
+                <p class="text-xs md:text-sm text-slate-500 mt-1">
+                  ฟิลด์ทั้งหมดที่ระบบใช้เป็นฐานความรู้ในการค้นหา
+                  กดที่แถวเพื่อดูเงื่อนไขการส่งข้อมูลและ FAQ ที่เกี่ยวข้อง
+                </p>
+              </div>
+              <button
+                onclick="switchTab('home')"
+                class="px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition flex items-center gap-1.5 shadow-sm"
+              >
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>กลับหน้าหลัก</span>
+              </button>
+            </div>
+
+            <!-- Search Box -->
+            <div
+              class="bg-white rounded-2xl border border-slate-200 p-3 shadow-sm mb-4 flex items-center gap-2"
+            >
+              <div class="flex items-center gap-2 flex-1 min-w-0 px-2">
+                <i data-lucide="search" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                <input
+                  type="text"
+                  id="fields-filter-text"
+                  placeholder="ค้นหาข้อมูล..."
+                  class="flex-1 min-w-0 bg-transparent text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none py-1.5"
+                  oninput="renderFieldsCatalog()"
+                />
+              </div>
+            </div>
+
+            <p id="fields-catalog-count" class="text-xs text-slate-500 mb-3 px-1">กำลังโหลด...</p>
+
+            <!-- Catalog Table -->
+            <div class="rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-sm">
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                  <thead class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-100">
+                    <tr>
+                      <th class="px-4 py-3 w-10">#</th>
+                      <th class="px-4 py-3">ชื่อฟิลด์</th>
+                      <th class="px-4 py-3">คำอธิบาย</th>
+                      <th class="px-4 py-3 hidden md:table-cell">ตาราง</th>
+                      <th class="px-4 py-3 hidden sm:table-cell">ประเภทข้อมูล</th>
+                      <th class="px-4 py-3 text-center">ความจำเป็น</th>
+                    </tr>
+                  </thead>
+                  <tbody id="fields-catalog-body" class="divide-y divide-slate-100 text-slate-700">
+                    <tr>
+                      <td colspan="6" class="px-5 py-8 text-center text-slate-400">กำลังโหลดรายการฟิลด์...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bar -->
+        <footer
+          class="pt-6 mt-8 border-t border-slate-100 text-xs text-slate-400 flex flex-wrap items-center justify-between gap-4"
+        >
+          <div>
+            <span
+              >ระบบสืบค้นข้อกำหนดและแนวทางแก้ไขปัญหาการนำส่งข้อมูล IBSL ด้วยเทคนิค RAG</span
+            >
+          </div>
+          <div class="flex items-center gap-4">
+            <button onclick="switchTab('home')" class="hover:text-blue-600">
+              หน้าหลัก
+            </button>
+            <span>•</span>
+            <button onclick="switchTab('search')" class="hover:text-blue-600">
+              ค้นหาคำตอบ
+            </button>
+            <span>•</span>
+            <button onclick="switchTab('fields')" class="hover:text-blue-600">
+              รายการฟิลด์ข้อมูล
+            </button>
+            <span>•</span>
+            <button onclick="switchTab('metrics')" class="hover:text-blue-600">
+              ผลการประเมินประสิทธิภาพ
+            </button>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="/static/app.js?v=4"></script>
+  </body>
+</html>

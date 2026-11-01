@@ -1,0 +1,151 @@
+{
+  "dataset": "Fields_4.0 & IBSL-PR-INC_001_V1.0_25690813(1).pdf",
+  "version": "2.0",
+  "description": "ชุดทดสอบมาตรฐาน (Ground Truth Benchmark) สำหรับประเมินประสิทธิภาพการค้นคืนรายการฟิลด์และข้อกำหนดเอกสาร IBSL",
+  "cases": [
+    {
+      "test_id": "GT-01",
+      "query": "pol_type ส่งค่า NULL ได้หรือไม่",
+      "category": "Policy",
+      "expected_item_ids": [
+        "FIELD-pol_type"
+      ],
+      "page_ref": "6-7",
+      "description": "ประเภทกรมธรรม์ pol_type ห้ามส่งค่า NULL",
+      "verified": true
+    },
+    {
+      "test_id": "GT-02",
+      "query": "pol_start_date ต้องส่งวันที่รูปแบบใด",
+      "category": "Policy",
+      "expected_item_ids": [
+        "FIELD-pol_start_date",
+        "FIELD-pol_end_date"
+      ],
+      "page_ref": "12-13",
+      "description": "วันที่เริ่มต้นและสิ้นสุดความคุ้มครอง pol_start_date, pol_end_date",
+      "verified": true
+    },
+    {
+      "test_id": "GT-03",
+      "query": "pol_status 9999 เกิด Error อะไร",
+      "category": "Policy",
+      "expected_item_ids": [
+        "FIELD-pol_status",
+        "FIELD-pol_transaction_status"
+      ],
+      "page_ref": "14-16",
+      "description": "สถานะกรมธรรม์ pol_status ส่ง 9999 เกิด Error 1000005",
+      "verified": true
+    },
+    {
+      "test_id": "GT-04",
+      "query": "pol_distribution ส่งรหัสช่องทางการขายอย่างไร",
+      "category": "Policy",
+      "expected_item_ids": [
+        "FIELD-pol_distribution"
+      ],
+      "page_ref": "20-22",
+      "description": "ช่องทางการขาย pol_distribution ห้ามส่ง 99",
+      "verified": true
+    },
+    {
+      "test_id": "GT-05",
+      "query": "ผู้เอาประกัน",
+      "category": "Insured",
+      "expected_item_ids": [
+        "FIELD-insureds",
+        "FIELD-insrd_seq",
+        "FIELD-insrd_id",
+        "FIELD-insrd_cov_plan_seq"
+      ],
+      "page_ref": "26-35",
+      "description": "ข้อมูลผู้เอาประกันภัยในกรมธรรม์",
+      "verified": true
+    },
+    {
+      "test_id": "GT-06",
+      "query": "sub_pol_start_date ส่งปี พ.ศ. ได้หรือไม่",
+      "category": "Sub Policy",
+      "expected_item_ids": [
+        "FIELD-sub_pol_start_date",
+        "FIELD-sub_pol_end_date"
+      ],
+      "page_ref": "45-47",
+      "description": "วันที่เริ่มต้นและสิ้นสุดสัญญาเพิ่มเติม ห้ามส่งปี พ.ศ.",
+      "verified": true
+    },
+    {
+      "test_id": "GT-07",
+      "query": "cov_plan_cov_amt ส่งค่า 0 ได้หรือไม่",
+      "category": "Coverage Plan Coverage",
+      "expected_item_ids": [
+        "FIELD-cov_plan_cov_amt",
+        "FIELD-cov_plan_sum_insured"
+      ],
+      "page_ref": "60-62",
+      "description": "จำนวนเงินเอาประกันภัยหรือผลประโยชน์ ห้ามส่ง 0 หรือ NULL",
+      "verified": true
+    },
+    {
+      "test_id": "GT-08",
+      "query": "pmt_prd_premium_seq คืนเบี้ยส่งค่าติดลบได้หรือไม่",
+      "category": "Payment Period Seq",
+      "expected_item_ids": [
+        "FIELD-pmt_prd_premium_seq",
+        "FIELD-pmt_prd_premium_amount"
+      ],
+      "page_ref": "79-83",
+      "description": "งวดการชำระเบี้ย pmt_prd_premium_seq การคืนเบี้ย Credit Note",
+      "verified": true
+    },
+    {
+      "test_id": "GT-09",
+      "query": "claim_hospital_id ต้องระบุอย่างไร",
+      "category": "Claim",
+      "expected_item_ids": [
+        "FIELD-claim_hospital_id",
+        "FIELD-claim_hospital_name"
+      ],
+      "page_ref": "100-109",
+      "description": "รหัสสถานพยาบาลและชื่อสถานพยาบาลที่เคลม",
+      "verified": true
+    },
+    {
+      "test_id": "GT-10",
+      "query": "claim_reject_reason ปฏิเสธจ่ายสินไหมส่งรหัสอะไร",
+      "category": "Claim",
+      "expected_item_ids": [
+        "FIELD-claim_reject_reason",
+        "FIELD-claim_status"
+      ],
+      "page_ref": "109-111",
+      "description": "สาเหตุการปฏิเสธเคลม claim_reject_reason และ claim_status = R",
+      "verified": true
+    },
+    {
+      "test_id": "GT-11",
+      "query": "claim_estimate_seq ข้อมูลครั้งที่ประมาณการส่งอย่างไร",
+      "category": "Estimate",
+      "expected_item_ids": [
+        "FIELD-claim_estimate_seq",
+        "FIELD-claim_estimate_amount"
+      ],
+      "page_ref": "118-119",
+      "description": "ครั้งที่ประมาณการเคลม claim_estimate_seq",
+      "verified": true
+    },
+    {
+      "test_id": "GT-12",
+      "query": "claim_payment_term_paid งวดที่จ่ายเคลมส่งอย่างไร",
+      "category": "Claim Payment",
+      "expected_item_ids": [
+        "FIELD-claim_payment_term_paid",
+        "FIELD-claim_payment_amt"
+      ],
+      "page_ref": "125-127",
+      "description": "งวดที่จ่ายเคลม claim_payment_term_paid",
+      "verified": true
+    }
+  ]
+}
